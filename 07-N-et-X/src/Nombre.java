@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Nombre {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		 /*Ecrire un programme qui calcule les N premiers multiples d'un nombre entier X.
 		 N et X étant entrés au clavier.
 		 Il est demandé de choisir la structure répétitive (for, while, do...while) la mieux

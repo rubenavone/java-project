@@ -2,7 +2,7 @@
 public class Array {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		
 		/*Exercice10
 		Déclarez et initialisez une variable tab1 de type tableau contenant les 4 éléments suivants : 4, 67, 25, 87.
@@ -45,7 +45,7 @@ public class Array {
 	}
 
 	private static void set(int i) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

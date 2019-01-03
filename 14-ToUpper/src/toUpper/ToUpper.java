@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class ToUpper {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		/*Exercice 14
 			1.demander à un utilisateur de saisir une chaine de caractère
 			2.retournez cette chaine en majuscule

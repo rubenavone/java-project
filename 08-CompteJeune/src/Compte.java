@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Compte {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		/*Calculer le nombre de jeunes.
  			Il s’agit de dénombrer toutes les personnes d'âge inférieur strictement à vingt ans
  			parmi un échantillon donné de vingt personnes. Les personnes saisissent leur âge sur

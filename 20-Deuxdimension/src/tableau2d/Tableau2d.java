@@ -3,7 +3,7 @@ package tableau2d;
 public class Tableau2d {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		/*Exercice20
 		 *Déclarez et initialiser un tableau d'entiers à deux dimensions, dont la taille est deux
 		 *pour la première dimension et

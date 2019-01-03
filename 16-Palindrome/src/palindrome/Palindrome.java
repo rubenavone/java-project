@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Palindrome {
 	    
 	public static void main(String[] args) {
-		//TODO 
+		
 		/*demandez la saisie d'un mot
 		 *Déterminez si ce mot est un palindrome
 		 *Transfomer le mot en upper ou lower cases peut importe. 

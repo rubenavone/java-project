@@ -8,7 +8,7 @@ public class Letters {
 
 	public static void main(String[] args) {
 
-		// TODO Auto-generated method stub
+		
 		/*Exercice 15
 		Demandez la saisie d'un mot à l'utilisateur
 		Afficher les trois derniers caractères de ce mot

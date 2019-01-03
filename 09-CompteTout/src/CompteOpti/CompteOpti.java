@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class CompteOpti {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		/*Il s’agit de dénombrer les personnes d'âge inférieur strictement à 20 ans, les
 			 personnes d'âge supérieur strictement à 40 ans et celles dont l'âge est compris entre
 			 20 ans et 40 ans (20 ans et 40 ans y compris).

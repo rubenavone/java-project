@@ -4,7 +4,6 @@ import java.util.Date;
 public class TestMethode {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		/*
 		 * Test des methode, je met en commentaire ce que chaque methode fait 
 		 * succeptile d'etre modifier 

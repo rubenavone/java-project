@@ -63,7 +63,7 @@ public class Dichotomie {
 					System.out.println("C'est plus !");
 					
 				}else {
-					System.out.println("Bravo vous avez trouver le bon nombre : " + nbAleatoire + c);
+					System.out.println("Bravo vous avez trouver le bon nombre : " + nbAleatoire + count);
 					verif = false;
 				}
 

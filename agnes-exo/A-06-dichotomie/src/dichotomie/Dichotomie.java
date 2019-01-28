@@ -27,18 +27,18 @@ public class Dichotomie {
 		//Declaration des variable//
 			//Divers façon de randomiser//
 			int nbAleatoire;
-			int nbAleatoire2;
-			double nbAleatoire3;
-			int nbAleatoire4;
+			//int nbAleatoire2;
+			//double nbAleatoire3;
+			//int nbAleatoire4;
 		int saisis;
 		boolean verif = true;
 		int count = 0;
 		
 		//Etape 01// 
 		nbAleatoire = (int) (Math.random() * 1000); // Casting solution simple
-		nbAleatoire2 = (int) Math.floor(Math.random() * 1001);
-		nbAleatoire3 = Math.random() * 1001;
-		nbAleatoire4 = rand.nextInt(1001);
+		//nbAleatoire2 = (int) Math.floor(Math.random() * 1001);
+		//nbAleatoire3 = Math.random() * 1001;
+		//nbAleatoire4 = rand.nextInt(1001);
 
 
 		//Debut Etape 06//
@@ -63,7 +63,7 @@ public class Dichotomie {
 					System.out.println("C'est plus !");
 					
 				}else {
-					System.out.println("Bravo vous avez trouver le bon nombre : " + nbAleatoire +"\nIl vous a fallus " + count + "coups");
+					System.out.println("Bravo vous avez trouver le bon nombre : " + nbAleatoire +"\nIl vous a fallus " + count + " coups");
 					verif = false;
 				}
 
@@ -75,10 +75,10 @@ public class Dichotomie {
 		}
 
 		//Testing things Affichage//
-		System.out.println("Nombre aléatoire 1" + nbAleatoire + "\n(int) (Math.random() * 1000)"); //Solution
+		/*System.out.println("Nombre aléatoire 1" + nbAleatoire + "\n(int) (Math.random() * 1000)"); //Solution
 		System.out.println("Nombre aléatoire 2" + nbAleatoire2 + "\n(int) Math.floor(Math.random() * 1001)"); //solution 2
 		System.out.println("Nombre aléatoire 3" + nbAleatoire3 + "\nMath.random() * 1001;"); //solution 3
-		System.out.println("Nombre aléatoire 4" + nbAleatoire4 + "\nrand.nextInt(1001);"); //solution 4
+		System.out.println("Nombre aléatoire 4" + nbAleatoire4 + "\nrand.nextInt(1001);"); //solution 4*/
 
 	}
 

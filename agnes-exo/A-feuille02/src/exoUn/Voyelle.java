@@ -1,6 +1,6 @@
 package exoUn;
 
-public class Voyelles {
+public class Voyelle {
 	public static void main(String[] args) {
 		
 		/*Écrire un programme qui lit un mot au clavier et qui indique combien de fois sont

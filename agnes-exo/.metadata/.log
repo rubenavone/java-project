@@ -2598,3 +2598,21 @@ java.io.FileNotFoundException: /home/ruben/Simplon/java-project/agnes-exo/.recom
 
 !ENTRY org.eclipse.core.resources 2 10035 2019-01-28 13:29:46.472
 !MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2019-01-28 13:41:16.321 -----------------------------------------------
+eclipse.buildId=4.9.0.I20180906-0745
+java.version=1.8.0_191
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=fr_FR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2019-01-28 13:41:19.390
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jface.text 2 0 2019-01-28 13:43:11.190
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'
+
+!ENTRY org.eclipse.ui.navigator 4 0 2019-01-28 13:43:11.581
+!MESSAGE Cannot find navigator content extension (using triggerPoints) for object "<null>" parent path: "src [in A-feuille02]
+  <default> (not open)
+  exoUn (not open)".  Check that you have an expression for this object in a navigatorContent triggerPoints or enablement.

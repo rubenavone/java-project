@@ -2616,3 +2616,30 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp
 !MESSAGE Cannot find navigator content extension (using triggerPoints) for object "<null>" parent path: "src [in A-feuille02]
   <default> (not open)
   exoUn (not open)".  Check that you have an expression for this object in a navigatorContent triggerPoints or enablement.
+
+!ENTRY org.eclipse.jface.text 2 0 2019-01-28 13:48:53.853
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'
+
+!ENTRY org.eclipse.ui.navigator 4 0 2019-01-28 14:57:27.508
+!MESSAGE Cannot find navigator content extension (using triggerPoints) for object "<null>" parent path: "src [in Bonus]
+  <default> (not open)
+  ChiFouMi (not open)".  Check that you have an expression for this object in a navigatorContent triggerPoints or enablement.
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2019-01-28 14:57:41.384
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: Java Model Status [Invalid name specified: ChiFouMi*.java]
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:798)
+	at org.eclipse.jdt.internal.core.PackageFragment.createCompilationUnit(PackageFragment.java:164)
+	at org.eclipse.jdt.ui.wizards.NewTypeWizardPage.createType(NewTypeWizardPage.java:2137)
+	at org.eclipse.jdt.internal.ui.wizards.NewClassCreationWizard.finishPage(NewClassCreationWizard.java:68)
+	at org.eclipse.jdt.internal.ui.wizards.NewElementWizard$2.run(NewElementWizard.java:123)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:41)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:736)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2292)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2319)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5736)
+	at org.eclipse.jdt.internal.ui.actions.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:108)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+!SUBENTRY 1 org.eclipse.jdt.core 4 983 2019-01-28 14:57:41.386
+!MESSAGE Invalid name specified: ChiFouMi*.java

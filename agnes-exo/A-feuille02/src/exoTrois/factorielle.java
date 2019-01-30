@@ -24,8 +24,8 @@ public class factorielle {
 			//////Initialisation//////
 			/////////////////////////
 		
-		int facteur = 20; //Le nombre ou chiffre a factoriser
-		int multiplicateur = 0; // Le multiplicateur qui change petit a petit
+		int facteur = 5; //Le nombre ou chiffre a factoriser
+		int multiplicateur = 1; // Le multiplicateur qui change petit a petit
 		
 		//init et recuperation de la saisis de l'utilisateur//
 		Scanner scan = new Scanner(System.in);		
@@ -33,13 +33,10 @@ public class factorielle {
 		//facteur = scan.nextInt();
 		
 		
-		do {
-			multiplicateur ++;
-			int swap = multiplicateur;
-			swap +=  multiplicateur;
-			System.out.println((swap - 1) + " le multiplicateur actuel est " + multiplicateur);
-			
-		}while(facteur > multiplicateur);
+		for (int i = 1; i <= facteur; i++) {
+			multiplicateur *= i;
+			System.out.println(multiplicateur);
+		}
 		
 		
 		

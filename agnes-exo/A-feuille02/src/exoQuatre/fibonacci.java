@@ -23,24 +23,23 @@ public class fibonacci {
 				sinon 
 				  renvoyer fibo(n - 1) + fibo(n - 2)
 				fin de la fonction
-			 */
+				le faire sur papier avant
+			 */		
+		int n = 7;		
+		int f1 = 0;
+		int f2 = 1;
+		int f3 = 1;
 		
-		int n = 5;
+		System.out.println("f1 = 0 " );
+		System.out.println("f2 = 1");		
+	for(int i = 2; i <= n; i++) {
 		
-		int f0 = 0;
-		int f1 = 1;
-		int f2 = 0;
-		
-		for(int i = 0; i < n; i++) {
-			
-			f1 += f0;
-			f0 ++;
-			
-			System.out.println(f1);
-			
-		}
-				 
-		
+		System.out.println("f"+(i)+ " = " + f3);		
+		f1 = f2;		
+		f2 = f3;		
+		f3 = f1 + f2;	
+	}
+		//System.out.println("f"+n+ " = " + f3);
 	}
 
 }

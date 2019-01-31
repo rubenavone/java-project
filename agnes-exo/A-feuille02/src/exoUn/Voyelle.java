@@ -36,8 +36,8 @@ public class Voyelle {
 		
 		//Ouverture du scanner//
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Entré le mot a comparé");
-		String mot = scan.nextLine();
+		System.out.println("Entrer le mot a comparé");
+		String mot = scan.nextLine().toLowerCase();
 
 		//Je parcours la chaine de voyelles//
 		

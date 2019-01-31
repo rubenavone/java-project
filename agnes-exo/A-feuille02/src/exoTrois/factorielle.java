@@ -1,6 +1,6 @@
 package exoTrois;
 import java.util.Scanner;
-import bin.exo7Rand.*;
+
 public class factorielle {
 
 	public static void main(String[] args) {
@@ -30,7 +30,8 @@ public class factorielle {
 		//init et recuperation de la saisis de l'utilisateur//
 		Scanner scan = new Scanner(System.in);		
 		System.out.println("Merci d'entrer le chiffre ou nombre a factoriser !");
-		//facteur = scan.nextInt();
+		
+		facteur = scan.nextInt();
 		
 		
 		for (int i = 1; i <= facteur; i++) {

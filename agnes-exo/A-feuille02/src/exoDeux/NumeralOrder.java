@@ -36,7 +36,7 @@ public class NumeralOrder {
 		
 		String nombreConvertie =  Integer.toString(nombreEntier);
 				
-		System.err.println("Le nombre Entier une fois convertie en string est : " + nombreEntier);
+		System.out.println("Le nombre Entier une fois convertie en string est : " + nombreEntier +"\n");
 		
 		for (int i = 0; i < nombreConvertie.length(); i++) {
 			

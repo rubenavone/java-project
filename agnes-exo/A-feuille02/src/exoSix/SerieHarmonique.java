@@ -39,7 +39,7 @@ public class SerieHarmonique {
 			System.out.println("le résultat est " + (Math.round(f * 10.0))/10.0);
 			
 		}
-		
+		scan.close();
 	}
 	
 }

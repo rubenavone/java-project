@@ -41,5 +41,6 @@ public class Array {
 		}
 		
 		System.out.println("La somme de tous les éléments du tableau est égale à " + sommeTotal);
+		scan.close();
 	}
 }

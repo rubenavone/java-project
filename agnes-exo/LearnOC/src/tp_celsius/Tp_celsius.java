@@ -10,16 +10,17 @@ public class Tp_celsius {
 		return (double) ( (int) (A * Math.pow(10, B) + .5)) / Math.pow(10, B);
 	}
 
-	public static int conversionCelsius(double fahr) {
+	public static double conversionCelsius(double fahr) {
+		
+		
+		double celsius = (fahr - 32) * 5 / 9;
 
-		int celsius = 0;
-
-		return celsius;
+		return (int)celsius;
 	}
 
-	public static double conversionFahrenheit(int celsius) {
-		double fahr = 0.0;
-
+	public static double conversionFahrenheit(double celsius) {
+		
+		double fahr = (1.8 * celsius) + 32;
 		return fahr;
 
 	}
@@ -33,43 +34,53 @@ public class Tp_celsius {
 		 */
 		int choiceConvert = 0;
 		boolean again = true ;
-		int celsius;
-		double fahr = 0.0;
+		boolean againLast = true;
+		double nbAConvertir;
 
-		System.out.println("Veuillez choisir la conversion a effectuer;"
-				+ "\n 1 - Conversion Fahrenheit vers Celsius"
-				+ "\n 2 - Convertion Celsius vers Fahrenheit");
 
-		
+
+
 		while(again) {
 			while(again) {
+				System.out.println("Veuillez choisir la conversion a effectuer;"
+						+ "\n 1 - Conversion Fahrenheit vers Celsius"
+						+ "\n 2 - Convertion Celsius vers Fahrenheit");
+				
 				choiceConvert = sc.nextInt();
+				
 				if(choiceConvert == 1) {
 					System.out.println("Merci d'entrée le nombre que vous souhaiter convertir");
-					fahr = sc.nextDouble();
-					System.out.println(conversionCelsius(fahr));
+					nbAConvertir = sc.nextDouble();
+					System.out.println(conversionCelsius(nbAConvertir));
 					again = false;
 				}else if (choiceConvert == 2) {
 					System.out.println("Merci d'entrée le nombre que vous souhaiter convertir");
-					celsius = sc.nextInt();
-					System.out.println(conversionCelsius(celsius));
+					nbAConvertir = sc.nextDouble();
+					System.out.println(conversionFahrenheit(nbAConvertir));
 					again = false;
 				}else {
 					System.out.println("Saisis incorecte merci de recommencer !");
 				}
+				
 			}	
-			System.out.println("Voulez vous faire une nouvelle converion ?");	
+			System.out.println("Voulez vous faire une nouvelle converion ?"
+					+ "\n 1 - OUI"
+					+ "\n 2 - NON");	
 			choiceConvert = sc.nextInt();	
-
-			if(choiceConvert == 1 ) {
-				System.out.println("Le programme va recommencer");
-				again = true;
-
-			}else {
-				System.out.println("Au revoir !");
-				again = false;
+			againLast = true;
+			while(againLast) {
+				if(choiceConvert == 1 ) {
+					System.out.println("Le programme va recommencer");
+					againLast = false;
+					again = true;
+					
+				}else if (choiceConvert == 2) {
+					System.out.println("Au revoir !");
+					againLast = false;
+				}else {
+					System.out.println("Erreur dans la saisis merci de recommencer");
+				}
 			}
-
 		}
 
 

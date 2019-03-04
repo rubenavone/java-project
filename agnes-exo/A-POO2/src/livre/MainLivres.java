@@ -24,11 +24,20 @@ public class MainLivres {
     static int entryNumber;
     
     public static void main(String[] args) {
-
+       Scanner sc = new Scanner(System.in);
+        
        Livres book1 = new Livres();
        Livres book2 = new Livres();
        Livres book3 = new Livres();
        Livres book4 = new Livres();
+       
+       book1.saisir();
+       book2.saisir();
+       book3.saisir();
+       book4.saisir();
+       
+       Livres book5 = new Livres();
+       book5.saisir2(sc);
        
         System.out.println(Livres.getBonus());
         System.out.println(book1);

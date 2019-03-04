@@ -11,36 +11,55 @@ import java.util.Scanner;
  *
  * @author ruben
  */
+
 public class Main {
-
+    
     static Scanner sc = new Scanner(System.in);
-
-    public lambda saisisEmployee() {
-        int id = sc.nextInt();
-        String nom = sc.nextLine();
-        String prenom = sc.nextLine();
-        int salaire = sc.nextInt();
-
-        Employee lambda = new Employee(id, nom, prenom, salaire);
+    static Personne[] humansIndustries = new Personne[4];
+    
+    public static void select(){
         
-        return lambda;
+        int select;
+      
+        for (int i = 0; i < humansIndustries.length; i++) {
+                    
+            System.out.println("Quel est le status de la personne que vous souahitez ajouter"
+                    + "\n1 - Etudiant"
+                    + "\n2 - Employee"
+                    + "\n3 - Professeur");
+
+            select = sc.nextInt();
+
+            if(select == 1){
+                humansIndustries[i] = Etudiant.addEtudiant();
+            }else if(select == 2){
+                humansIndustries[i] = Employee.addEmployee();
+            }else if(select == 3){
+                humansIndustries[i] = Professeur.addProf();
+            }else {
+                System.out.println("Erreur de saisis");
+            }
+         }
+        
     }
-
+    
     public static void main(String[] args) {
-       /**
-        * Begin
-        */
-
-        Etudiant romain = new Etudiant(23, "van-damne", "Romain", "123442");
-
+       
+        
+        
+        select();
+        
+        Etudiant romain = new Etudiant("van-damne", "Romain", 123442);
         System.out.println(romain.toString());
-
-        Employee kevin = new Employee(2, "SanMartino", "Kevin", 5000);
+        
+        Employee kevin = new Employee("SanMartino", "Kevin", 5000);
         System.out.println(kevin.toString());
 
-        for (String arg : args) {
-
+        for (Object humansIndustrie : humansIndustries) {
+            System.out.println(humansIndustrie);
         }
+        
+        
 
     }
 }

@@ -15,13 +15,15 @@ public class Livres {
 
     public static Scanner sc = new Scanner(System.in);
     private int id = 0;
+    private static int count = 0;
+   
     private String titre;
     private String auteur;
-    private int prix;
+    private double prix;
     private static int bonus;
     private int essaie;
 
-    private void saisir() {
+    public void saisir() {
         
         System.out.println("Faut essayer de rentrer l'album secret !");
         
@@ -32,11 +34,24 @@ public class Livres {
         auteur = sc.nextLine();
 
         System.out.println("et Enfin le prix ");
-        prix = sc.nextInt();
+        prix = sc.nextDouble();
 
         System.out.println(martinePetiteMaligne());
     }
+    public void saisir2(Scanner sc){
+         System.out.println("Faut essayer de rentrer l'album secret !");
+        
+        System.out.println("Merci d'entrée le nom du livre");
+        titre = sc.nextLine();
 
+        System.out.println("Merci de saisir l'auteur ");
+        auteur = sc.nextLine();
+
+        System.out.println("et Enfin le prix ");
+        prix = sc.nextDouble();
+
+        System.out.println(martinePetiteMaligne());
+    }
     public String martinePetiteMaligne() {
 
         String indice = "";
@@ -83,7 +98,7 @@ public class Livres {
     }
 
     public Livres() {
-        saisir();
+       this.id  = ++count;      
     }
 
     /**
@@ -113,11 +128,11 @@ public class Livres {
         this.auteur = auteur;
     }
 
-    public int getPrix() {
+    public double getPrix() {
         return prix;
     }
 
-    public void setPrix(int prix) {
+    public void setPrix(double prix) {
         this.prix = prix;
     }
 
@@ -136,7 +151,13 @@ public class Livres {
     public void setEssaie(int essaie) {
         this.essaie = essaie;
     }
+    public static int getCount() {
+        return count;
+    }
 
+    public static void setCount(int count) {
+        Livres.count = count;
+    }
     /**
      * **************
      */

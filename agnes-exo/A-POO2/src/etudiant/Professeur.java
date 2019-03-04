@@ -14,22 +14,43 @@ public class Professeur extends Employee {
      /****************/
     /*****Attribut****/
     /****************/
-    String specialite;
+    private String specialite;
+
+    
     
      /****************/
     /**Constructeur**/
     /****************/
-    public Professeur(int id, String nom, String prenom, int salaire,String specialite){
-        super(id, nom, prenom, salaire);
+    public Professeur(String nom, String prenom, double salaire,String specialite){
+        super(nom, prenom, salaire);
         this.specialite = specialite;
     }
-    
+    public Professeur(){
+        super();
+    }
      /****************/
     /*****Methode****/
     /****************/
-    @Override
-    public void insert() {
+     public static Professeur addProf() {
         
+        Professeur lambda = new Professeur();
+
+        System.out.println("Merci de saisir le nom");
+        lambda.setNom(sc.nextLine());
+        
+        System.out.println("Merci de saisir le prenom");
+        lambda.setPrenom(sc.nextLine());
+        
+        System.out.println("Merci de saisir le salaire ");
+        lambda.setSalaire(sc.nextDouble());
+        
+        sc.nextLine();
+        
+        System.out.println("Merci d'entrée la spécialité du professeur");
+        lambda.specialite = sc.nextLine();
+        
+        
+        return lambda;
     }
 
     @Override
@@ -37,5 +58,11 @@ public class Professeur extends Employee {
         return "Professeur{" + "specialite=" + specialite + '}';
     }
     
-    
+    public String getSpecialite() {
+        return specialite;
+    }
+
+    public void setSpecialite(String specialite) {
+        this.specialite = specialite;
+    }
 }

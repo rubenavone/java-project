@@ -25,21 +25,27 @@ public class MainLivres {
     
     public static void main(String[] args) {
        Scanner sc = new Scanner(System.in);
-        
-       Livres book1 = new Livres();
-       Livres book2 = new Livres();
-       Livres book3 = new Livres();
-       Livres book4 = new Livres();
        
-       book1.saisir();
-       book2.saisir();
-       book3.saisir();
-       book4.saisir();
+       ArrayList<Livres> arr = new ArrayList<>();
        
-       Livres book5 = new Livres();
-       book5.saisir2(sc);
+        for (int i = 0; i < 3; i++) {
+            Livres book = new Livres();
+            book.saisir();
+            arr.add(book);
+        }
+       
+      for (int i = 0; i < 3; i++) {
+            Livres book1 = new Livres();
+            book1.saisir2(sc);
+            arr.add(book1);
+        }
+       
+        for (Iterator<Livres> iterator = arr.iterator(); iterator.hasNext();) {
+            Livres next = iterator.next();
+            
+        }
        
         System.out.println(Livres.getBonus());
-        System.out.println(book1);
+        
     }
 }

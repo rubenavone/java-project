@@ -49,6 +49,7 @@ public class Livres {
 
         System.out.println("et Enfin le prix ");
         prix = sc.nextDouble();
+        sc.nextLine();
 
         System.out.println(martinePetiteMaligne());
     }

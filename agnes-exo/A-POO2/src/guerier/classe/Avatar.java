@@ -23,9 +23,7 @@ abstract class Avatar { //Par default c'est public
         this.vieMax = vieMax;
        
     }
-    
-    
-    
+   
     public abstract void saluer();
     
     public abstract void attaquer(Avatar adverse);

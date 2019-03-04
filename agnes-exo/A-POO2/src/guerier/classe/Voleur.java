@@ -17,7 +17,7 @@ public class Voleur extends Avatar {
 
     @Override
     public void saluer() {
-        System.out.println("L'oeil vif loin de vos poches");
+        System.out.println("L'oeil vif proche des poches");
         this.or++;
     }
 

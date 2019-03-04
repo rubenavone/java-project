@@ -20,6 +20,7 @@ public class MainHeritage {
 		
 		capitaine.setMonument("Le quartier rouge");
 		System.out.println(capitaine.decrisToi());
+		System.out.println(capi.decrisToi());
 	}
 
 }

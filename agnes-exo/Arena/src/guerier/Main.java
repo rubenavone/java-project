@@ -30,7 +30,9 @@ public class Main {
         Voleur v = new Voleur();
         v.saluer();
         System.out.println("Quel sera l'afrontement du jour ?");
-        
        
+        m.attaquer(v);
+       
+        v.checkHp();
     }
 }

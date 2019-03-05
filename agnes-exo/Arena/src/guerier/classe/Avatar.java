@@ -16,15 +16,24 @@ abstract class Avatar { //Par default c'est public
     protected String nom;
     protected float or;
 
+    /*
+     * Constructeur
+     * Héro
+     */
     public Avatar(int hp, int mp, int puissance, int vieMax, int mpMax) {
         this.hp = hp;
         this.mp = mp;
         this.puissance = puissance;
-        this.vieMax = vieMax;
-       
+        this.vieMax = vieMax;  
     }
    
-    
+    /*
+     * Méchant
+     */
+    public Avatar(int hp, int puissance) {
+    	this.hp = hp;
+    	this.puissance = puissance;
+    }
     
     /*
      * ABSTRACT
@@ -44,14 +53,13 @@ abstract class Avatar { //Par default c'est public
     public void boirePotionMana(){
         this.hp += .3*mpMax;
     }
-    
-    /*
-     * set & get
-     */
+    public void checkHp() {
+    	System.out.println(this.hp + "/" + this.vieMax);
+    }
+     
     public String getNom() {
         return nom;
     }
-
     public void setNom(String nom) {
         this.nom = nom;
     }

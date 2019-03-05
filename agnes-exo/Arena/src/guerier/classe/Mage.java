@@ -34,7 +34,7 @@ public class Mage extends Avatar {
         if (mp > 0) {
 
             System.out.println("Quelle attaque voulez vous faire");
-            System.out.println("1: feu \n 2: eclair");
+            System.out.println("1: feu \n 2: eclair \n 3: baton");
 
             int saisie = sc.nextInt();
 
@@ -51,6 +51,7 @@ public class Mage extends Avatar {
             }
 
         } else {
+        	System.out.println("plus de mana ! Vous attaquer au baton");
             this.attaqueBaton();
         }
 
@@ -63,7 +64,6 @@ public class Mage extends Avatar {
      * Les attaques
      */
     private int bouleDeFeu() {
-
         this.mp -= 40;
         return 50;
     }
@@ -74,7 +74,6 @@ public class Mage extends Avatar {
     }
 
     private int attaqueBaton() {
-
         return 10;
     }
 }

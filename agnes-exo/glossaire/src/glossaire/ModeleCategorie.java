@@ -1,7 +1,7 @@
 /*
  * Be Happy
  */
-package Modele;
+package glossaire;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -27,7 +27,7 @@ public class ModeleCategorie extends Modele {
             Statement declaration = connexion.createStatement();
 
             /* Requete */
-            String query = "SELECT id, nom FROM categorie;";
+            String query = "SELECT id, mot, type FROM lexique;";
 
             /* Exécution d'une requête de lecture */
             ResultSet resultat = declaration.executeQuery(query);
@@ -36,7 +36,8 @@ public class ModeleCategorie extends Modele {
             while (resultat.next()) {
                 Object[] row = new Object[]{
                     resultat.getInt("id"), 
-                    resultat.getString("nom")
+                    resultat.getString("mot"),
+                    resultat.getString("type")
                 };
                 System.out.println(Arrays.toString(row));
 

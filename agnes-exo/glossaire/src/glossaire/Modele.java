@@ -1,7 +1,7 @@
 /*
  * Be Happy
  */
-package Modele;
+package glossaire;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,13 +21,13 @@ public class Modele {
     public static Connection startConnection() {
 
         /* Connexion à la base de données */
-        String url = "jdbc:mysql://127.0.0.1:8000/glossaire";
+        String url = "jdbc:mysql://127.0.0.1/Glossaire";
         String utilisateur = "root";
         String motDePasse = "";
         Connection co = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            co = DriverManager.getConnection(url, utilisateur, motDePasse);
+            co = DriverManager.getConnection(url,utilisateur, motDePasse);
             if (!co.isClosed()) {
                 System.out.println(
                         "Connexion au serveur... OK"

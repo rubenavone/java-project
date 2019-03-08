@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +18,8 @@ import java.util.logging.Logger;
  */
 public class ModeleCategorie extends Modele {
 
-    public static void afficheCategories() {
+    public static ArrayList<Object[]> afficheCategories() {
+        ArrayList<Object[]> results = new ArrayList<>();
         try {
 
             /* Création de la connexion*/
@@ -27,7 +29,7 @@ public class ModeleCategorie extends Modele {
             Statement declaration = connexion.createStatement();
 
             /* Requete */
-            String query = "SELECT id, mot, type FROM lexique;";
+            String query = "SELECT id, mot, type , definition FROM lexique;";
 
             /* Exécution d'une requête de lecture */
             ResultSet resultat = declaration.executeQuery(query);
@@ -37,10 +39,11 @@ public class ModeleCategorie extends Modele {
                 Object[] row = new Object[]{
                     resultat.getInt("id"), 
                     resultat.getString("mot"),
-                    resultat.getString("type")
+                    resultat.getString("type"),
+                    resultat.getString("definition")
                 };
-                System.out.println(Arrays.toString(row));
-
+                //System.out.println(Arrays.toString(row));
+                results.add(row);
             }
 
             /* fermeture du resultatSet */
@@ -53,6 +56,7 @@ public class ModeleCategorie extends Modele {
                     "Erreur d'affichage des catégories: " + e.getMessage()
             );
         }
+        return results;
     }
 
     /**

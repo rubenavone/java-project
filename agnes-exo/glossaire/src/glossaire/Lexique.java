@@ -5,27 +5,19 @@
  */
 package glossaire;
 
-import static glossaire.Modele.closeConnection;
-import static glossaire.Modele.startConnection;
-import java.sql.Array;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.ArrayList;
-import java.util.Arrays;
+
 
 /*
  * @author ruben
  */
 public class Lexique {
 
-    private static int id;
-    private static String mot;
-    private static String definition;
-    private static String type;
-
-    
+    private int id;
+    private String mot;
+    private String definition;
+    private String type;
 
     public static String afficheArray(ArrayList object) {
         String results = " ";
@@ -33,7 +25,6 @@ public class Lexique {
 
         for (Object object1 : object) {
             resultsSwap = object1.toString();
-
             results += resultsSwap;
         }
 
@@ -79,12 +70,11 @@ public class Lexique {
 
     @Override
     public String toString() {
-        return "Lexique{" + "id= \n" + id + ", nom= \n" + mot + ", definition= \n" + definition + ", type= \n" + type + '}';
+        return "Lexique{" + "id= \n" + id + ", nom= \n" + mot + "," + hashCode() +'}';
     }
 
-    
     public String[] toArray(){
-        String[] tab = {this.getMot(), this.getDefinition()};
+        String[] tab = {this.getMot(), this.getType()};
         return tab;
     }
 }

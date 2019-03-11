@@ -49,6 +49,7 @@ public class Modele {
         if (connexion != null) {
             try {
                 connexion.close();
+                System.out.println("fermeture de connexion");
             } catch (SQLException e) {
                 System.err.println("Erreur fermreture: " + e.getMessage());
             }

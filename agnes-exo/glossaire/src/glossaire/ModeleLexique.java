@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
 /**
  *
  * @author ruben
@@ -23,11 +24,10 @@ public class ModeleLexique {
      *Cette methode  affiche uniquement les definition
      *    
      */
-    public static String afficheDefinition() {
+    public static String afficheDefinition(int id) {
 
         String results = "";
-        String resultsSwap = "";
-
+  
         try {
 
             /* Création de la connexion*/
@@ -37,7 +37,7 @@ public class ModeleLexique {
             Statement declaration = connexion.createStatement();
 
             /* Requete */
-            String query = "SELECT id, mot, type , definition FROM lexique;";
+            String query = "SELECT definition FROM lexique WHERE id = " + id +";";
 
             /* Exécution d'une requête de lecture */
             ResultSet resultat = declaration.executeQuery(query);
@@ -59,16 +59,16 @@ public class ModeleLexique {
         }
         return results;
     }
+    
 
     /*
      *Une autre façon de faire,
      *avec une array list pour afficher dans la table
-     *
      */
-    public static ArrayList afficheEnsemble() {
+    public static ArrayList<Lexique> afficheEnsemble() {
 
-        ArrayList<Lexique> tab = new ArrayList<>();
-
+        ArrayList<Lexique> tab = new ArrayList<Lexique>();
+       
         try {
             /* Création de la connexion*/
             Connection connexion = startConnection();
@@ -77,30 +77,28 @@ public class ModeleLexique {
             Statement declaration = connexion.createStatement();
 
             /* Requete */
-            String query = "SELECT id, mot, type , definition FROM lexique;";
+            String query = "SELECT * FROM lexique ;";
 
             /* Exécution d'une requête de lecture */
             ResultSet resultat = declaration.executeQuery(query);
-
+            
             /* Récupération des données */
-            while (resultat.next()) {
-                Lexique row = new Lexique();
-                row.setId(resultat.getInt("id"));
-                row.setMot(resultat.getString("mot"));
-                row.setType(resultat.getString("type"));
-                row.setDefinition(resultat.getString("definition"));
-
-                //System.out.println(row);
-                tab.add(row);
-            }
-
-            System.out.println(tab);
+            while(resultat.next()) {
+                Lexique lexique = new Lexique();
+             
+                lexique.setId(resultat.getInt("id"));
+                lexique.setMot(resultat.getString("mot"));
+                lexique.setType(resultat.getString("type"));              
+                tab.add(lexique);              
+            }   
+  
             
             /* fermeture du resultatSet */
             resultat.close();
+            
             /* fermeture de la connexion */
             closeConnection(connexion);
-
+            
         } catch (SQLException e) {
             System.err.println(
                     "Erreur d'affichage des catégories: " + e.getMessage()
@@ -108,4 +106,6 @@ public class ModeleLexique {
         }
         return tab;
     }
+    
+    
 }

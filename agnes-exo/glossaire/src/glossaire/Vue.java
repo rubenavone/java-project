@@ -1,4 +1,3 @@
-
 package glossaire;
 
 import java.awt.BorderLayout;
@@ -21,16 +20,18 @@ import javax.swing.table.DefaultTableModel;
             Deuxiemement on place notre definiton dans un second text
             et enfin lors du clique sur le bouton envoie on recupere les deux 
             saisis et on les envoie dans la base de donnée 
-        */
+ */
 public class Vue extends javax.swing.JFrame {
+
     Lexique lexique = new Lexique();
     DefaultTableModel modelTab;
+
     /**
      * Creates new form Vue
      */
     public Vue() {
         initComponents();
-        modelTab = (DefaultTableModel) motAndLang.getModel();
+        modelTab = (DefaultTableModel) motAndType.getModel();
     }
 
     /**
@@ -42,23 +43,26 @@ public class Vue extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.JTabbedPane selector = new javax.swing.JTabbedPane();
+        selector = new javax.swing.JTabbedPane();
         javax.swing.JPanel create = new javax.swing.JPanel();
-        javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
-        motArea = new javax.swing.JTextArea();
         javax.swing.JScrollPane jScrollPane2 = new javax.swing.JScrollPane();
         definitionArea = new javax.swing.JTextArea();
-        javax.swing.JButton envoieBtn = new javax.swing.JButton();
+        javax.swing.JButton envoieButton = new javax.swing.JButton();
         javax.swing.JLabel motLabel = new javax.swing.JLabel();
         javax.swing.JLabel definitionLabel = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
+        fieldMot = new javax.swing.JTextField();
+        fieldCategorie = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
         javax.swing.JPanel read = new javax.swing.JPanel();
         javax.swing.JScrollPane jScrollPane3 = new javax.swing.JScrollPane();
         afficheArea = new javax.swing.JTextArea();
         javax.swing.JLabel afficheLabel = new javax.swing.JLabel();
-        afficheBtn = new javax.swing.JButton();
+        javax.swing.JButton afficheBtn = new javax.swing.JButton();
         javax.swing.JScrollPane listeMot = new javax.swing.JScrollPane();
-        motAndLang = new javax.swing.JTable();
+        motAndType = new javax.swing.JTable();
         javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel5 = new javax.swing.JLabel();
         javax.swing.JPanel update = new javax.swing.JPanel();
         javax.swing.JPanel delete = new javax.swing.JPanel();
 
@@ -66,27 +70,35 @@ public class Vue extends javax.swing.JFrame {
         setTitle("glossaire");
         setResizable(false);
 
+        selector.setBorder(new javax.swing.border.MatteBorder(null));
         selector.setToolTipText("");
         selector.setName(""); // NOI18N
-
-        motArea.setColumns(20);
-        motArea.setRows(5);
-        jScrollPane1.setViewportView(motArea);
 
         definitionArea.setColumns(20);
         definitionArea.setRows(5);
         jScrollPane2.setViewportView(definitionArea);
 
-        envoieBtn.setText("Envoie");
-        envoieBtn.addActionListener(new java.awt.event.ActionListener() {
+        envoieButton.setText("Envoie");
+        envoieButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                envoieBtnActionPerformed(evt);
+                envoieButtonActionPerformed(evt);
             }
         });
 
         motLabel.setText("Mot");
 
         definitionLabel.setText("Definition");
+
+        jLabel2.setText("Catégorie");
+
+        fieldCategorie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldCategorieActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel3.setText("Ajouter un nouveau mot:");
 
         javax.swing.GroupLayout createLayout = new javax.swing.GroupLayout(create);
         create.setLayout(createLayout);
@@ -95,36 +107,54 @@ public class Vue extends javax.swing.JFrame {
             .addGroup(createLayout.createSequentialGroup()
                 .addGap(128, 128, 128)
                 .addGroup(createLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
-                .addGap(141, 141, 141))
+                    .addGroup(createLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                        .addGap(141, 141, 141))
+                    .addGroup(createLayout.createSequentialGroup()
+                        .addGap(168, 168, 168)
+                        .addGroup(createLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fieldCategorie)
+                            .addComponent(fieldMot)
+                            .addGroup(createLayout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(jLabel2)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(289, 289, 289))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(createLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createLayout.createSequentialGroup()
-                        .addComponent(envoieBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(envoieButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(321, 321, 321))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createLayout.createSequentialGroup()
                         .addComponent(definitionLabel)
-                        .addGap(350, 350, 350))))
-            .addGroup(createLayout.createSequentialGroup()
-                .addGap(372, 372, 372)
-                .addComponent(motLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(350, 350, 350))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createLayout.createSequentialGroup()
+                        .addComponent(motLabel)
+                        .addGap(370, 370, 370))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(217, 217, 217))))
         );
         createLayout.setVerticalGroup(
             createLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createLayout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
-                .addComponent(motLabel)
+                .addGap(41, 41, 41)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(motLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldMot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(fieldCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(definitionLabel)
                 .addGap(8, 8, 8)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(envoieBtn)
+                .addComponent(envoieButton)
                 .addGap(50, 50, 50))
         );
 
@@ -136,19 +166,16 @@ public class Vue extends javax.swing.JFrame {
 
         afficheLabel.setText("Liste de mots");
 
-        afficheBtn.setText("Affiche");
+        afficheBtn.setText("Affiche/Update");
         afficheBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 afficheBtnActionPerformed(evt);
             }
         });
 
-        motAndLang.setModel(new javax.swing.table.DefaultTableModel(
+        motAndType.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Mot", "Langage"
@@ -169,21 +196,24 @@ public class Vue extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        motAndLang.setAutoscrolls(false);
-        motAndLang.setColumnSelectionAllowed(true);
-        motAndLang.addMouseListener(new java.awt.event.MouseAdapter() {
+        motAndType.setAutoscrolls(false);
+        motAndType.setColumnSelectionAllowed(true);
+        motAndType.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                motAndLangMouseClicked(evt);
+                motAndTypeMouseClicked(evt);
             }
         });
-        listeMot.setViewportView(motAndLang);
-        motAndLang.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (motAndLang.getColumnModel().getColumnCount() > 0) {
-            motAndLang.getColumnModel().getColumn(0).setResizable(false);
-            motAndLang.getColumnModel().getColumn(1).setResizable(false);
+        listeMot.setViewportView(motAndType);
+        motAndType.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (motAndType.getColumnModel().getColumnCount() > 0) {
+            motAndType.getColumnModel().getColumn(0).setResizable(false);
+            motAndType.getColumnModel().getColumn(1).setResizable(false);
         }
 
         jLabel1.setText("Définitions");
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel5.setText("Affichage du glossaire");
 
         javax.swing.GroupLayout readLayout = new javax.swing.GroupLayout(read);
         read.setLayout(readLayout);
@@ -192,25 +222,31 @@ public class Vue extends javax.swing.JFrame {
             .addGroup(readLayout.createSequentialGroup()
                 .addGap(181, 181, 181)
                 .addComponent(afficheLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 297, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(127, 127, 127))
-            .addGroup(readLayout.createSequentialGroup()
-                .addComponent(listeMot, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, readLayout.createSequentialGroup()
+                .addGroup(readLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(readLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(afficheBtn))
+                    .addComponent(listeMot, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(readLayout.createSequentialGroup()
-                .addGap(344, 344, 344)
-                .addComponent(afficheBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, readLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(234, 234, 234))
         );
         readLayout.setVerticalGroup(
             readLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(readLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(11, 11, 11)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(afficheBtn)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(readLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(afficheLabel)
                     .addComponent(jLabel1))
@@ -218,7 +254,7 @@ public class Vue extends javax.swing.JFrame {
                 .addGroup(readLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane3)
                     .addComponent(listeMot, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE))
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         selector.addTab("Read", read);
@@ -227,11 +263,11 @@ public class Vue extends javax.swing.JFrame {
         update.setLayout(updateLayout);
         updateLayout.setHorizontalGroup(
             updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 771, Short.MAX_VALUE)
+            .addGap(0, 769, Short.MAX_VALUE)
         );
         updateLayout.setVerticalGroup(
             updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 507, Short.MAX_VALUE)
+            .addGap(0, 505, Short.MAX_VALUE)
         );
 
         selector.addTab("Update", update);
@@ -240,11 +276,11 @@ public class Vue extends javax.swing.JFrame {
         delete.setLayout(deleteLayout);
         deleteLayout.setHorizontalGroup(
             deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 771, Short.MAX_VALUE)
+            .addGap(0, 769, Short.MAX_VALUE)
         );
         deleteLayout.setVerticalGroup(
             deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 507, Short.MAX_VALUE)
+            .addGap(0, 505, Short.MAX_VALUE)
         );
 
         selector.addTab("Delete", delete);
@@ -267,41 +303,51 @@ public class Vue extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-        
-    /*
-         * Recuperere les infos stocker dans les text area
-         * Ouvre la connection vers le serveur sql
-         * Insertion des éléménts dans la table correspondante
-         * INSERT INTO ma_table(colone
-         */
- 
-    
-    private void envoieBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_envoieBtnActionPerformed
-        //TODO lors du clique on Recupere les info dans les texte area et on les envoie dans la bdd
-        
 
-        
-    }//GEN-LAST:event_envoieBtnActionPerformed
-
-    private void afficheBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afficheBtnActionPerformed
-        // TODO Lors du clic affiche les élément de la table lexique dans le tableau 
-       // afficheArea.setText(Lexique.afficheEnsemble().toString()); //Affiche avec le toString
-       
-        ArrayList<Lexique> array = ModeleLexique.afficheEnsemble();
-       System.out.println(array);
-//       
-//       for(Lexique l : array){
-//        modelTab.addRow(l.toArray());
-//        }
-    }//GEN-LAST:event_afficheBtnActionPerformed
-
-    private void motAndLangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_motAndLangMouseClicked
+    /**
+     * Lors du clique sur une colonne
+     * envoie l'id de la dite colone et recupere la 
+     * definition
+     * @param evt 
+     */
+    private void motAndTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_motAndTypeMouseClicked
         // TODO add your handling code here:
         afficheArea.setLineWrap(true);
-        afficheArea.setText(ModeleLexique.afficheDefinition());
-        
-    }//GEN-LAST:event_motAndLangMouseClicked
 
+        int id = motAndType.getSelectedRow()+1;
+
+        afficheArea.setText(ModeleLexique.afficheDefinition(id));
+        System.out.println(ModeleLexique.afficheDefinition(id));
+        System.out.println(id);
+    }//GEN-LAST:event_motAndTypeMouseClicked
+
+    private void fieldCategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCategorieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldCategorieActionPerformed
+
+//GEN-FIRST:event_envoieBtnActionPerformed
+ 
+//GEN-LAST:event_envoieBtnActionPerformed
+
+    private void afficheBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afficheBtnActionPerformed
+     ArrayList<Lexique> array = ModeleLexique.afficheEnsemble();
+       System.out.println(array);
+      
+       for(Lexique l : array){
+       modelTab.addRow(l.toArray());
+       }
+    }//GEN-LAST:event_afficheBtnActionPerformed
+
+    private void envoieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_envoieButtonActionPerformed
+        String mot = fieldMot.getText();
+        String type = fieldCategorie.getText();
+        String definition = definitionArea.getText();
+        
+        ModeleCategorie.ajouterMot(mot, definition, type);
+    }//GEN-LAST:event_envoieButtonActionPerformed
+
+   
+   
     /**
      * @param args the command line arguments
      */
@@ -311,7 +357,7 @@ public class Vue extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -333,16 +379,17 @@ public class Vue extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Vue().setVisible(true); 
+                new Vue().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JTextArea afficheArea;
-    javax.swing.JButton afficheBtn;
     javax.swing.JTextArea definitionArea;
-    javax.swing.JTable motAndLang;
-    javax.swing.JTextArea motArea;
+    javax.swing.JTextField fieldCategorie;
+    javax.swing.JTextField fieldMot;
+    javax.swing.JTable motAndType;
+    javax.swing.JTabbedPane selector;
     // End of variables declaration//GEN-END:variables
 }

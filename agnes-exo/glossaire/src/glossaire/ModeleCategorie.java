@@ -18,10 +18,10 @@ import java.util.logging.Logger;
  */
 public class ModeleCategorie extends Modele {
 
-    public static ArrayList<Object[]> afficheCategories() {
-        ArrayList<Object[]> results = new ArrayList<>();
-        try {
+    public static ArrayList<Lexique> afficheCategoriesOriginal() {
+        ArrayList<Lexique> results = new ArrayList<>();
 
+        try {
             /* Création de la connexion*/
             Connection connexion = startConnection();
 
@@ -34,21 +34,24 @@ public class ModeleCategorie extends Modele {
             /* Exécution d'une requête de lecture */
             ResultSet resultat = declaration.executeQuery(query);
 
-            /* Récupération des données */ 
+            /* Récupération des données */
             while (resultat.next()) {
-                Object[] row = new Object[]{
-                    resultat.getInt("id"), 
-                    resultat.getString("mot"),
-                    resultat.getString("type"),
-                    resultat.getString("definition")
-                };
+                Lexique row = new Lexique();
+                row.setMot(resultat.getString("mot"));
+//                {
+//                    resultat.getInt("id"), 
+//                    resultat.getString("mot"),
+//                    resultat.getString("type"),
+//                    resultat.getString("definition")
+//                };
                 //System.out.println(Arrays.toString(row));
                 results.add(row);
+
             }
 
             /* fermeture du resultatSet */
             resultat.close();
-            /* fermeture de la connexion */ 
+            /* fermeture de la connexion */
             closeConnection(connexion);
 
         } catch (SQLException e) {
@@ -64,7 +67,7 @@ public class ModeleCategorie extends Modele {
      *
      * @param nom
      */
-    public static void ajouterCategorie(String nom) {
+    public static void ajouterMot(String mot , String definition, String type) {
         try {
             /* Création de la connexion */
             Connection co = startConnection();
@@ -73,25 +76,27 @@ public class ModeleCategorie extends Modele {
             Statement declaration = co.createStatement();
 
             /* Requete */
-            String query = "INSERT INTO categorie ( nom ) VALUES ('" + nom + "')";
+            String query = "INSERT INTO lexique (mot, definition, type) VALUES ('" + mot + "','" + definition + "','" + type + "')";
 
             /* Execution d'une requete en écriture */
             int executeUpdate = declaration.executeUpdate(query);
 
             /* Traitement de l'insertion */
             if (executeUpdate == 1) {
-                System.out.println("Insertion de la categorie effectuée ! ");
+                System.out.println("Insertion du mot effectuée ! ");
             } else {
-                System.out.println("Insertion de la catégorie non effectuée.");
+                System.out.println("Insertion du mot non effectuée.");
             }
 
             /* Fermeture de la connexion */
             closeConnection(co);
         } catch (SQLException e) {
-            System.err.println("Erreur d'insertion d'une catégorie " + e.getMessage());
+            System.err.println("Erreur d'insertion d'un mot " + e.getMessage());
         }
     }
 
+  
+    
     /**
      * Supression d'une categorie en précisant l'id
      *

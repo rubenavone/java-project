@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package glossaire;
 
 
@@ -12,7 +8,7 @@ import java.util.ArrayList;
 /*
  * @author ruben
  */
-public class Lexique {
+public class Lexique extends Modele {
 
     private int id;
     private String mot;

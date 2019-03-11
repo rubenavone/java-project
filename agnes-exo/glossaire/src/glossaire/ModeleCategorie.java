@@ -17,8 +17,15 @@ import java.util.logging.Logger;
  * @author Agnes extends ruben
  */
 public class ModeleCategorie extends Modele {
-
+    
+    /**
+     * Permet de regouper les éléments d'une requete 
+     * dans une array liste qui sera traiter ulterieurement pour
+     * l'affichage 
+     * @return 
+     */
     public static ArrayList<Lexique> afficheCategoriesOriginal() {
+        
         ArrayList<Lexique> results = new ArrayList<>();
 
         try {
@@ -62,11 +69,14 @@ public class ModeleCategorie extends Modele {
         return results;
     }
 
-    /**
-     * Ajout d'un catégorie
-     *
-     * @param nom
-     */
+   /**
+    * Méthode permettant d'ajouter 
+    * une entrée dans la base de donnée 
+    * elle prend trois paramètre
+    * @param mot
+    * @param definition
+    * @param type 
+    */
     public static void ajouterMot(String mot , String definition, String type) {
         try {
             /* Création de la connexion */
@@ -126,9 +136,9 @@ public class ModeleCategorie extends Modele {
 
     
     /**
-     * Supression d'une categorie en précisant l'id
+     * Supression d'une categorie avec un mot
      *
-     * @param id
+     * @param mot
      */
     public static void supprimerCategorie(String mot) {
         try {

@@ -9,16 +9,16 @@ changer certaine ligne du code notament celle concernant la connexion au serveur
 
 Ligne 23 à 26 dans le fichier Modele de la source ;
 
-##Screenshoot de l'application
+## Screenshoot de l'application
 
-###Create
+### Create
 ![alt text](http://www.rubenavone.fr/imageHeberge/create.png)
 
-###Read
+### Read
 ![alt text](http://www.rubenavone.fr/imageHeberge/read.png)
 
-###Update
+### Update
 ![alt text](http://www.rubenavone.fr/imageHeberge/update.png)
 
-###Delete
+### Delete
 ![alt text](http://www.rubenavone.fr/imageHeberge/delete.png)

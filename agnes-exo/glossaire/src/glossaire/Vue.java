@@ -1,14 +1,12 @@
 package glossaire;
 
-import java.awt.BorderLayout;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author agnes extends ruben
- */
-/*
             Faire une petit soft permettant de crée
                                                lire
                                                mettre à jour
@@ -47,7 +45,7 @@ public class Vue extends javax.swing.JFrame {
         javax.swing.JPanel create = new javax.swing.JPanel();
         javax.swing.JScrollPane jScrollPane2 = new javax.swing.JScrollPane();
         definitionArea = new javax.swing.JTextArea();
-        javax.swing.JButton envoieButton = new javax.swing.JButton();
+        envoieButton = new javax.swing.JButton();
         javax.swing.JLabel motLabel = new javax.swing.JLabel();
         javax.swing.JLabel definitionLabel = new javax.swing.JLabel();
         javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
@@ -56,18 +54,39 @@ public class Vue extends javax.swing.JFrame {
         javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
         javax.swing.JPanel read = new javax.swing.JPanel();
         javax.swing.JScrollPane jScrollPane3 = new javax.swing.JScrollPane();
-        afficheArea = new javax.swing.JTextArea();
+        readArea = new javax.swing.JTextArea();
         javax.swing.JLabel afficheLabel = new javax.swing.JLabel();
-        javax.swing.JButton afficheBtn = new javax.swing.JButton();
+        afficheBtn = new javax.swing.JButton();
         javax.swing.JScrollPane listeMot = new javax.swing.JScrollPane();
         motAndType = new javax.swing.JTable();
         javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel5 = new javax.swing.JLabel();
         javax.swing.JPanel update = new javax.swing.JPanel();
-        searchField = new javax.swing.JTextField();
-        searchBtn = new javax.swing.JButton();
-        javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
+        javax.swing.JTextField searchField = new javax.swing.JTextField();
+        javax.swing.JButton searchBtn = new javax.swing.JButton();
+        javax.swing.JLabel searchTitle = new javax.swing.JLabel();
+        javax.swing.JLabel updateTitle = new javax.swing.JLabel();
+        javax.swing.JTextField updateMotField = new javax.swing.JTextField();
+        javax.swing.JLabel motTitle = new javax.swing.JLabel();
+        javax.swing.JLabel catTitle = new javax.swing.JLabel();
+        javax.swing.JTextField updateCatField = new javax.swing.JTextField();
+        javax.swing.JScrollPane updateDefArea = new javax.swing.JScrollPane();
+        javax.swing.JTextArea updateDefiArea = new javax.swing.JTextArea();
+        javax.swing.JLabel updateDefTitle = new javax.swing.JLabel();
+        javax.swing.JButton jButton1 = new javax.swing.JButton();
         javax.swing.JPanel delete = new javax.swing.JPanel();
+        javax.swing.JLabel searchTitle1 = new javax.swing.JLabel();
+        searchField2 = new javax.swing.JTextField();
+        searchBtn2 = new javax.swing.JButton();
+        javax.swing.JLabel updateTitle1 = new javax.swing.JLabel();
+        updateMotField2 = new javax.swing.JTextField();
+        javax.swing.JLabel motTitle1 = new javax.swing.JLabel();
+        javax.swing.JLabel updateDefTitle1 = new javax.swing.JLabel();
+        updateCatField2 = new javax.swing.JTextField();
+        javax.swing.JLabel catTitle1 = new javax.swing.JLabel();
+        javax.swing.JScrollPane updateDefArea1 = new javax.swing.JScrollPane();
+        updateDefiArea2 = new javax.swing.JTextArea();
+        javax.swing.JButton jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("glossaire");
@@ -111,17 +130,13 @@ public class Vue extends javax.swing.JFrame {
                 .addGap(128, 128, 128)
                 .addGroup(createLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(createLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-                        .addGap(141, 141, 141))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+                        .addGap(128, 128, 128))
                     .addGroup(createLayout.createSequentialGroup()
                         .addGap(168, 168, 168)
                         .addGroup(createLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldCategorie)
-                            .addComponent(fieldMot)
-                            .addGroup(createLayout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(jLabel2)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(fieldCategorie, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                            .addComponent(fieldMot))
                         .addGap(289, 289, 289))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -130,31 +145,37 @@ public class Vue extends javax.swing.JFrame {
                         .addComponent(envoieButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(321, 321, 321))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createLayout.createSequentialGroup()
-                        .addComponent(definitionLabel)
-                        .addGap(350, 350, 350))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createLayout.createSequentialGroup()
                         .addComponent(motLabel)
-                        .addGap(370, 370, 370))
+                        .addGap(360, 360, 360))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(217, 217, 217))))
+                        .addComponent(jLabel2)
+                        .addGap(339, 339, 339))))
+            .addGroup(createLayout.createSequentialGroup()
+                .addGroup(createLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(createLayout.createSequentialGroup()
+                        .addGap(205, 205, 205)
+                        .addComponent(jLabel3))
+                    .addGroup(createLayout.createSequentialGroup()
+                        .addGap(337, 337, 337)
+                        .addComponent(definitionLabel)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         createLayout.setVerticalGroup(
             createLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGap(37, 37, 37)
                 .addComponent(motLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldMot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addGap(13, 13, 13)
                 .addComponent(fieldCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(14, 14, 14)
                 .addComponent(definitionLabel)
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(envoieButton)
@@ -163,9 +184,9 @@ public class Vue extends javax.swing.JFrame {
 
         selector.addTab("Create", create);
 
-        afficheArea.setColumns(20);
-        afficheArea.setRows(5);
-        jScrollPane3.setViewportView(afficheArea);
+        readArea.setColumns(20);
+        readArea.setRows(5);
+        jScrollPane3.setViewportView(readArea);
 
         afficheLabel.setText("Liste de mots");
 
@@ -225,7 +246,7 @@ public class Vue extends javax.swing.JFrame {
             .addGroup(readLayout.createSequentialGroup()
                 .addGap(181, 181, 181)
                 .addComponent(afficheLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(127, 127, 127))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, readLayout.createSequentialGroup()
@@ -237,17 +258,17 @@ public class Vue extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, readLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(readLayout.createSequentialGroup()
+                .addGap(223, 223, 223)
                 .addComponent(jLabel5)
-                .addGap(234, 234, 234))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         readLayout.setVerticalGroup(
             readLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(readLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addGap(17, 17, 17)
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(afficheBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(readLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -269,50 +290,211 @@ public class Vue extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Recherche");
+        searchTitle.setText("Recherche");
+
+        updateTitle.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        updateTitle.setText("Mettre à jour une entrée");
+
+        motTitle.setText("Mot");
+
+        catTitle.setText("Categorie");
+
+        updateCatField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateCatFieldActionPerformed(evt);
+            }
+        });
+
+        updateDefiArea.setColumns(20);
+        updateDefiArea.setRows(5);
+        updateDefArea.setViewportView(updateDefiArea);
+
+        updateDefTitle.setText("definition");
+
+        jButton1.setText("Mise à jour");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout updateLayout = new javax.swing.GroupLayout(update);
         update.setLayout(updateLayout);
         updateLayout.setHorizontalGroup(
             updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(updateLayout.createSequentialGroup()
+                .addGap(242, 242, 242)
+                .addComponent(motTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(catTitle)
+                .addGap(163, 163, 163))
+            .addGroup(updateLayout.createSequentialGroup()
                 .addGroup(updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(updateLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
+                        .addGap(165, 165, 165)
+                        .addComponent(updateMotField, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)
+                        .addComponent(updateCatField, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(updateLayout.createSequentialGroup()
+                        .addGap(348, 348, 348)
+                        .addComponent(updateDefTitle))
+                    .addGroup(updateLayout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(updateLayout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jLabel4)))
-                .addContainerGap(523, Short.MAX_VALUE))
+                        .addGap(309, 309, 309)
+                        .addComponent(searchTitle)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateLayout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addGroup(updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateLayout.createSequentialGroup()
+                        .addGroup(updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updateDefArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateLayout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(281, 281, 281)))
+                        .addGap(53, 53, 53))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateLayout.createSequentialGroup()
+                        .addComponent(updateTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(206, 206, 206))))
         );
         updateLayout.setVerticalGroup(
             updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(updateLayout.createSequentialGroup()
-                .addGroup(updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(updateLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, updateLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(421, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(updateTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(searchTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(motTitle)
+                    .addComponent(catTitle))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateMotField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateCatField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addComponent(updateDefTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(updateDefArea, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
 
         selector.addTab("Update", update);
+
+        searchTitle1.setText("Recherche");
+
+        searchBtn2.setText("GO");
+        searchBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn2ActionPerformed(evt);
+            }
+        });
+
+        updateTitle1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        updateTitle1.setText("Supprimer une entrée");
+
+        motTitle1.setText("Mot");
+
+        updateDefTitle1.setText("definition");
+
+        updateCatField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateCatField2ActionPerformed(evt);
+            }
+        });
+
+        catTitle1.setText("Categorie");
+
+        updateDefiArea2.setColumns(20);
+        updateDefiArea2.setRows(5);
+        updateDefArea1.setViewportView(updateDefiArea2);
+
+        jButton2.setText("Suppression");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout deleteLayout = new javax.swing.GroupLayout(delete);
         delete.setLayout(deleteLayout);
         deleteLayout.setHorizontalGroup(
             deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 769, Short.MAX_VALUE)
+            .addGroup(deleteLayout.createSequentialGroup()
+                .addGap(242, 242, 242)
+                .addComponent(motTitle1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(catTitle1)
+                .addGap(163, 163, 163))
+            .addGroup(deleteLayout.createSequentialGroup()
+                .addGroup(deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deleteLayout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addComponent(updateMotField2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)
+                        .addComponent(updateCatField2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(deleteLayout.createSequentialGroup()
+                        .addGap(348, 348, 348)
+                        .addComponent(updateDefTitle1))
+                    .addGroup(deleteLayout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(searchField2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(searchBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(deleteLayout.createSequentialGroup()
+                        .addGap(309, 309, 309)
+                        .addComponent(searchTitle1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, deleteLayout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addGroup(deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, deleteLayout.createSequentialGroup()
+                        .addGroup(deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updateDefArea1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, deleteLayout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(281, 281, 281)))
+                        .addGap(53, 53, 53))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, deleteLayout.createSequentialGroup()
+                        .addComponent(updateTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(206, 206, 206))))
         );
         deleteLayout.setVerticalGroup(
             deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
+            .addGroup(deleteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(updateTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(searchTitle1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(motTitle1)
+                    .addComponent(catTitle1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateMotField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateCatField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addComponent(updateDefTitle1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(updateDefArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
 
         selector.addTab("Delete", delete);
@@ -321,11 +503,14 @@ public class Vue extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(selector)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(selector)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(selector, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(selector, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         selector.getAccessibleContext().setAccessibleName("Create");
@@ -340,17 +525,25 @@ public class Vue extends javax.swing.JFrame {
      * Lors du clique sur une colonne
      * envoie l'id de la dite colone et recupere la 
      * definition
+     *  //ALTER TABLE `lexique` auto_increment = 5;
+     *  //Sinon trouver un moyen de recuperer la valeur de la cellule pour faire une recherche
      * @param evt 
      */
     private void motAndTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_motAndTypeMouseClicked
-        // TODO add your handling code here:
-        afficheArea.setLineWrap(true);
+        // TODO     
+       
+   
+        readArea.setLineWrap(true);
 
         int id = motAndType.getSelectedRow()+1;
-
-        afficheArea.setText(ModeleLexique.afficheDefinition(id));
-        System.out.println(ModeleLexique.afficheDefinition(id));
-        System.out.println(id);
+        int row = motAndType.getSelectedRow();
+        String mot = (String) motAndType.getValueAt(row, 0);
+        System.out.println(mot);
+       
+        
+        readArea.setText(ModeleLexique.afficheDefinition(mot));
+        //System.out.println(ModeleLexique.afficheDefinition(id));
+        //System.out.println(id);
     }//GEN-LAST:event_motAndTypeMouseClicked
 
     private void fieldCategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCategorieActionPerformed
@@ -364,12 +557,15 @@ public class Vue extends javax.swing.JFrame {
     private void afficheBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afficheBtnActionPerformed
      ArrayList<Lexique> array = ModeleLexique.afficheEnsemble();
        modelTab.setRowCount(0);
+       //Pour chaque élément contenue dans array 
+       //Crée une nouvelle ligne 
        for(Lexique l : array){
        modelTab.addRow(l.toArray());
        }
     }//GEN-LAST:event_afficheBtnActionPerformed
 
     private void envoieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_envoieButtonActionPerformed
+       
         String mot = fieldMot.getText();
         String type = fieldCategorie.getText();
         String definition = definitionArea.getText();
@@ -377,13 +573,38 @@ public class Vue extends javax.swing.JFrame {
         ModeleCategorie.ajouterMot(mot, definition, type);
     }//GEN-LAST:event_envoieButtonActionPerformed
 
-    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void updateCatFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCatFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateCatFieldActionPerformed
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+
+        //System.out.println(Arrays.toString(ModeleLexique.rechercheGlossaire(searchField.getText())));
+
+        String[] receive = ModeleLexique.rechercheGlossaire(searchField.getText());
+        updateDefiArea.setLineWrap(true);
+        updateMotField.setText(receive[0]);
+        updateDefiArea.setText(receive[1]);
+        updateCatField.setText(receive[2]);
+
     }//GEN-LAST:event_searchBtnActionPerformed
-    
-    //ALTER TABLE `lexique` auto_increment = 5;
-    //Sinon trouver un moyen de recuperer la valeur de la cellule pour faire une recherche
-   
+
+    private void searchBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchBtn2ActionPerformed
+
+    private void updateCatField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCatField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateCatField2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -421,13 +642,18 @@ public class Vue extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    javax.swing.JTextArea afficheArea;
+    javax.swing.JButton afficheBtn;
     javax.swing.JTextArea definitionArea;
+    javax.swing.JButton envoieButton;
     javax.swing.JTextField fieldCategorie;
     javax.swing.JTextField fieldMot;
     javax.swing.JTable motAndType;
-    javax.swing.JButton searchBtn;
-    javax.swing.JTextField searchField;
+    javax.swing.JTextArea readArea;
+    javax.swing.JButton searchBtn2;
+    javax.swing.JTextField searchField2;
     javax.swing.JTabbedPane selector;
+    javax.swing.JTextField updateCatField2;
+    javax.swing.JTextArea updateDefiArea2;
+    javax.swing.JTextField updateMotField2;
     // End of variables declaration//GEN-END:variables
 }

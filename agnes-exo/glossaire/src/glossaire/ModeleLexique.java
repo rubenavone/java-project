@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-
 /**
  *
  * @author ruben
@@ -24,10 +23,10 @@ public class ModeleLexique {
      *Cette methode  affiche uniquement les definition
      *    
      */
-    public static String afficheDefinition(int id) {
+    public static String afficheDefinition(String mot) {
 
         String results = "";
-  
+
         try {
 
             /* Création de la connexion*/
@@ -37,7 +36,7 @@ public class ModeleLexique {
             Statement declaration = connexion.createStatement();
 
             /* Requete */
-            String query = "SELECT definition FROM lexique WHERE id = " + id +";";
+            String query = "SELECT definition FROM lexique WHERE mot = '" + mot + "';";
 
             /* Exécution d'une requête de lecture */
             ResultSet resultat = declaration.executeQuery(query);
@@ -59,7 +58,43 @@ public class ModeleLexique {
         }
         return results;
     }
-    
+
+    public static String[] rechercheGlossaire(String mot) {
+
+        String[] results = new String[3];
+
+        try {
+
+            /* Création de la connexion*/
+            Connection connexion = startConnection();
+
+            /* Création de l'objet gérant les requêtes */
+            Statement declaration = connexion.createStatement();
+
+            /* Requete */
+            String query = "SELECT mot, definition, type FROM lexique WHERE mot = '" + mot + "';";
+
+            /* Exécution d'une requête de lecture */
+            ResultSet resultat = declaration.executeQuery(query);
+
+            /* Récupération des données */
+            while (resultat.next()) {
+                results[0] = resultat.getString("mot") + "\n";
+                results[1] = resultat.getString("definition") + "\n";
+                results[2] = resultat.getString("type") + "\n";
+            }
+            /* fermeture du resultatSet */
+            resultat.close();
+            /* fermeture de la connexion */
+            closeConnection(connexion);
+
+        } catch (SQLException e) {
+            System.err.println(
+                    "Erreur d'affichage des catégories: " + e.getMessage()
+            );
+        }
+        return results;
+    }
 
     /*
      *Une autre façon de faire,
@@ -68,7 +103,7 @@ public class ModeleLexique {
     public static ArrayList<Lexique> afficheEnsemble() {
 
         ArrayList<Lexique> tab = new ArrayList<Lexique>();
-       
+
         try {
             /* Création de la connexion*/
             Connection connexion = startConnection();
@@ -81,24 +116,23 @@ public class ModeleLexique {
 
             /* Exécution d'une requête de lecture */
             ResultSet resultat = declaration.executeQuery(query);
-            
+
             /* Récupération des données */
-            while(resultat.next()) {
+            while (resultat.next()) {
                 Lexique lexique = new Lexique();
-             
+
                 lexique.setId(resultat.getInt("id"));
                 lexique.setMot(resultat.getString("mot"));
-                lexique.setType(resultat.getString("type"));              
-                tab.add(lexique);              
-            }   
-  
-            
+                lexique.setType(resultat.getString("type"));
+                tab.add(lexique);
+            }
+
             /* fermeture du resultatSet */
             resultat.close();
-            
+
             /* fermeture de la connexion */
             closeConnection(connexion);
-            
+
         } catch (SQLException e) {
             System.err.println(
                     "Erreur d'affichage des catégories: " + e.getMessage()
@@ -106,6 +140,5 @@ public class ModeleLexique {
         }
         return tab;
     }
-    
-    
+
 }

@@ -76,8 +76,8 @@ public class ModeleCategorie extends Modele {
             Statement declaration = co.createStatement();
 
             /* Requete */
-            String query = "INSERT INTO lexique (mot, definition, type) VALUES ('" + mot + "','" + definition + "','" + type + "')";
-
+            String query = "INSERT INTO lexique (mot, definition, type) VALUES ("+'"'+ mot +'"'+","+'"'+ definition +'"'+ "," +'"'+ type +'"'+ ")";
+            System.out.println(query);
             /* Execution d'une requete en écriture */
             int executeUpdate = declaration.executeUpdate(query);
 
@@ -95,14 +95,42 @@ public class ModeleCategorie extends Modele {
         }
     }
 
-  
+    public static void updateMot(String originalMot ,String mot , String definition, String type) {
+        try {
+            /* Création de la connexion */
+            Connection co = startConnection();
+
+            /* Création de l'objet gérant les requetes */
+            Statement declaration = co.createStatement();
+
+            /* Requete */
+            String query = "UPDATE lexique SET mot = "+'"'+ mot +'"'+", definition = "+'"'+ definition +'"'+", type = "+'"'+ type +'"'+" WHERE mot = "+'"'+ originalMot +'"';
+              
+            System.out.println(query);
+            /* Execution d'une requete en écriture */
+            int executeUpdate = declaration.executeUpdate(query);
+
+            /* Traitement de l'insertion */
+            if (executeUpdate == 1) {
+                System.out.println("Mise à jour effectuée ! ");
+            } else {
+                System.out.println("Mise à jour non effectuée.");
+            }
+
+            /* Fermeture de la connexion */
+            closeConnection(co);
+        } catch (SQLException e) {
+            System.err.println("Erreur de Mise à jour " + e.getMessage());
+        }
+    }
+
     
     /**
      * Supression d'une categorie en précisant l'id
      *
      * @param id
      */
-    public static void supprimerCategorie(int id) {
+    public static void supprimerCategorie(String mot) {
         try {
             /* Création de la connexion */
             Connection co = startConnection();
@@ -110,22 +138,22 @@ public class ModeleCategorie extends Modele {
             Statement declaration = co.createStatement();
 
             /* Requete */
-            String query = "DELETE FROM categorie WHERE id = " + id;
-
+            String query = "DELETE FROM lexique WHERE mot = "+"'" + mot + "'" + "";
+   
             /* Execution d'une requete en écriture */
             int executeUpdate = declaration.executeUpdate(query);
-
+            
             /* Traitement de l'insertion */
             if (executeUpdate == 1) {
-                System.out.println("Suppression de la categorie effectuée ! ");
+                System.out.println("Suppression du mot effectuée ! ");
             } else {
-                System.out.println("Suppression de la catégorie non effectuée.");
+                System.out.println("Suppression du motnon effectuée.");
             }
 
             /* Fermeture de la connexion */
             closeConnection(co);
         } catch (SQLException e) {
-            System.err.println("Erreur de suppression d'une catégorie " + e.getMessage());
+            System.err.println("Erreur de suppression  " + e.getMessage());
         }
     }
 

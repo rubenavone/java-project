@@ -64,6 +64,9 @@ public class Vue extends javax.swing.JFrame {
         javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel5 = new javax.swing.JLabel();
         javax.swing.JPanel update = new javax.swing.JPanel();
+        searchField = new javax.swing.JTextField();
+        searchBtn = new javax.swing.JButton();
+        javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
         javax.swing.JPanel delete = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -259,15 +262,44 @@ public class Vue extends javax.swing.JFrame {
 
         selector.addTab("Read", read);
 
+        searchBtn.setText("GO");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Recherche");
+
         javax.swing.GroupLayout updateLayout = new javax.swing.GroupLayout(update);
         update.setLayout(updateLayout);
         updateLayout.setHorizontalGroup(
             updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 769, Short.MAX_VALUE)
+            .addGroup(updateLayout.createSequentialGroup()
+                .addGroup(updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(updateLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(updateLayout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jLabel4)))
+                .addContainerGap(523, Short.MAX_VALUE))
         );
         updateLayout.setVerticalGroup(
             updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
+            .addGroup(updateLayout.createSequentialGroup()
+                .addGroup(updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(updateLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, updateLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(421, Short.MAX_VALUE))
         );
 
         selector.addTab("Update", update);
@@ -331,8 +363,7 @@ public class Vue extends javax.swing.JFrame {
 
     private void afficheBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afficheBtnActionPerformed
      ArrayList<Lexique> array = ModeleLexique.afficheEnsemble();
-       System.out.println(array);
-      
+       modelTab.setRowCount(0);
        for(Lexique l : array){
        modelTab.addRow(l.toArray());
        }
@@ -346,7 +377,12 @@ public class Vue extends javax.swing.JFrame {
         ModeleCategorie.ajouterMot(mot, definition, type);
     }//GEN-LAST:event_envoieButtonActionPerformed
 
-   
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchBtnActionPerformed
+    
+    //ALTER TABLE `lexique` auto_increment = 5;
+    //Sinon trouver un moyen de recuperer la valeur de la cellule pour faire une recherche
    
     /**
      * @param args the command line arguments
@@ -390,6 +426,8 @@ public class Vue extends javax.swing.JFrame {
     javax.swing.JTextField fieldCategorie;
     javax.swing.JTextField fieldMot;
     javax.swing.JTable motAndType;
+    javax.swing.JButton searchBtn;
+    javax.swing.JTextField searchField;
     javax.swing.JTabbedPane selector;
     // End of variables declaration//GEN-END:variables
 }

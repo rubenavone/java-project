@@ -1,4 +1,4 @@
-## Glossaire projet 
+# Glossaire projet 
 
 Il faut crée un glossaire sous forme de CRUD (create read update delete).
 Nous avons donc dans notre logiciel quatre onglet qui permettent de faire ce qu'un CRUD demande.
@@ -8,3 +8,17 @@ Si jamais vous avez autre choses que ubuntu avec une installation de xampp il vo
 changer certaine ligne du code notament celle concernant la connexion au serveur SQL.
 
 Ligne 23 à 26 dans le fichier Modele de la source ;
+
+##Screenshoot de l'application
+
+###Create
+![alt text](http://www.rubenavone.fr/imageHeberge/create.png)
+
+###Read
+![alt text](http://www.rubenavone.fr/imageHeberge/read.png)
+
+###Update
+![alt text](http://www.rubenavone.fr/imageHeberge/update.png)
+
+###Delete
+![alt text](http://www.rubenavone.fr/imageHeberge/delete.png)

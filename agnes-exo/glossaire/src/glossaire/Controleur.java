@@ -19,9 +19,9 @@ public class Controleur extends Modele {
      * méthode si les champ ne sont pas vide 
      * etc
      */
-        String mess = "insertion effectuer";
-        String errMess = " Erreur dans l'insertion";
-        String empty = "Le champ est vide";
+        String mess = "Opération effectuer";
+        String errMess = "Erreur lors de l'operation";
+        String empty = "L'un des champ est vide";
         
     public void controlCreate(String mot, String definition, String type, JFrame frame){
             
@@ -38,11 +38,36 @@ public class Controleur extends Modele {
         }
             
     }
-    public void controlUpdate(){
-        
-    }
-    public void controlDelete(){
     
+    public void controlUpdate(String originalMot, String mot, String definition, String type , JFrame frame){
+       
+        if(!originalMot.isEmpty() || !mot.isEmpty() || !type.isEmpty() || !definition.isEmpty() ){
+             boolean flag = ModeleCategorie.updateMot(originalMot, mot, definition, type);
+             if(flag != false){
+                 //popup qui apparais si la condition est correcte
+                 JOptionPane.showMessageDialog(frame, mess,mess, JOptionPane.INFORMATION_MESSAGE);
+             }else{
+                 JOptionPane.showMessageDialog(frame, errMess,errMess, JOptionPane.INFORMATION_MESSAGE);
+             }
+        }else {
+            JOptionPane.showMessageDialog(frame, empty,empty, JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    public void controlDelete(String mot, JFrame frame){
+        
+        if(!mot.isEmpty()){
+             boolean flag = ModeleCategorie.supprimerCategorie(mot)
+                     ;
+             if(flag != false){
+                 //popup qui apparais si la condition est correcte
+                 JOptionPane.showMessageDialog(frame, mess,mess, JOptionPane.INFORMATION_MESSAGE);
+             }else{
+                 JOptionPane.showMessageDialog(frame, errMess,errMess, JOptionPane.INFORMATION_MESSAGE);
+             }
+        }else {
+            JOptionPane.showMessageDialog(frame, empty,empty, JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
 }

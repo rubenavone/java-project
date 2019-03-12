@@ -12,10 +12,16 @@ import java.sql.SQLException;
  * @author Agnes extends ruben
  */
 public class Modele {
+    
+    private int id;
+    private String mot;
+    private String definition;
+    private String type;
 
+    
+        //GESTION DE CONNECTION//
     /**
      * Connexion à la base de donnée NESTI
-     *
      * @return (connexion)
      */
     public static Connection startConnection() {
@@ -54,5 +60,50 @@ public class Modele {
                 System.err.println("Erreur fermreture: " + e.getMessage());
             }
         }
+    }
+    
+    ///////SET & GET////////
+    
+     public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getMot() {
+        return mot;
+    }
+
+    public void setMot(String mot) {
+        this.mot = mot;
+    }
+
+    public String getDefinition() {
+        return definition;
+    }
+
+    public void setDefinition(String definition) {
+        this.definition = definition;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    
+    @Override
+    public String toString() {
+        return "Lexique{" + "id= \n" + id + ", nom= \n" + mot + "," + hashCode() +'}';
+    }
+
+    public String[] toArray(){
+        String[] tab = {this.getMot(), this.getType()};
+        return tab;
     }
 }

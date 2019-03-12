@@ -17,16 +17,16 @@ import java.util.logging.Logger;
  * @author Agnes extends ruben
  */
 public class ModeleCategorie extends Modele {
-    
+    Modele lexique = new Modele();
     /**
      * Permet de regouper les éléments d'une requete 
      * dans une array liste qui sera traiter ulterieurement pour
      * l'affichage 
      * @return 
      */
-    public static ArrayList<Lexique> afficheCategoriesOriginal() {
+    public static ArrayList<Modele> afficheCategoriesOriginal() {
         
-        ArrayList<Lexique> results = new ArrayList<>();
+        ArrayList<Modele> results = new ArrayList<>();
 
         try {
             /* Création de la connexion*/
@@ -36,6 +36,7 @@ public class ModeleCategorie extends Modele {
             Statement declaration = connexion.createStatement();
 
             /* Requete */
+            
             String query = "SELECT id, mot, type , definition FROM lexique;";
 
             /* Exécution d'une requête de lecture */
@@ -43,7 +44,7 @@ public class ModeleCategorie extends Modele {
 
             /* Récupération des données */
             while (resultat.next()) {
-                Lexique row = new Lexique();
+                Modele row = new Modele();
                 row.setMot(resultat.getString("mot"));
 //                {
 //                    resultat.getInt("id"), 
@@ -80,30 +81,20 @@ public class ModeleCategorie extends Modele {
     public static boolean ajouterMot(String mot , String definition, String type) {
         boolean flag = false;
         try {
+            
             /* Création de la connexion */
             Connection co = startConnection();
-
-            /* Création de l'objet gérant les reque  if (executeUpdate == 1) {
-//                System.out.println("Insertion du mot effectuée ! ");
-//                flag = true;
-//            } else {
-//                System.out.println("Insertion du mot non effectuée.");
-//            }tes */
             Statement declaration = co.createStatement();
 
             /* Requete */
             String query = "INSERT INTO lexique (mot, definition, type) VALUES ("+'"'+ mot +'"'+","+'"'+ definition +'"'+ "," +'"'+ type +'"'+ ")";
             System.out.println(query);
+            
             /* Execution d'une requete en écriture */
             int executeUpdate = declaration.executeUpdate(query);
-            flag = (executeUpdate==1);
+            
             /* Traitement de l'insertion */
-//            if (executeUpdate == 1) {
-//                System.out.println("Insertion du mot effectuée ! ");
-//                flag = true;
-//            } else {
-//                System.out.println("Insertion du mot non effectuée.");
-//            }
+            flag = (executeUpdate==1);
 
             /* Fermeture de la connexion */
             closeConnection(co);
@@ -114,7 +105,8 @@ public class ModeleCategorie extends Modele {
         return flag;
     }
 
-    public static void updateMot(String originalMot ,String mot , String definition, String type) {
+    public static boolean updateMot(String originalMot ,String mot , String definition, String type) {
+       boolean flag = false;
         try {
             /* Création de la connexion */
             Connection co = startConnection();
@@ -128,19 +120,16 @@ public class ModeleCategorie extends Modele {
             System.out.println(query);
             /* Execution d'une requete en écriture */
             int executeUpdate = declaration.executeUpdate(query);
-
+            
             /* Traitement de l'insertion */
-            if (executeUpdate == 1) {
-                System.out.println("Mise à jour effectuée ! ");
-            } else {
-                System.out.println("Mise à jour non effectuée.");
-            }
+            flag = (executeUpdate == 1);
 
             /* Fermeture de la connexion */
             closeConnection(co);
         } catch (SQLException e) {
             System.err.println("Erreur de Mise à jour " + e.getMessage());
         }
+        return flag;
     }
 
     
@@ -149,7 +138,8 @@ public class ModeleCategorie extends Modele {
      *
      * @param mot
      */
-    public static void supprimerCategorie(String mot) {
+    public static boolean supprimerCategorie(String mot) {
+        boolean flag = false;
         try {
             /* Création de la connexion */
             Connection co = startConnection();
@@ -163,17 +153,14 @@ public class ModeleCategorie extends Modele {
             int executeUpdate = declaration.executeUpdate(query);
             
             /* Traitement de l'insertion */
-            if (executeUpdate == 1) {
-                System.out.println("Suppression du mot effectuée ! ");
-            } else {
-                System.out.println("Suppression du motnon effectuée.");
-            }
+           flag = (executeUpdate == 1);
 
             /* Fermeture de la connexion */
             closeConnection(co);
         } catch (SQLException e) {
             System.err.println("Erreur de suppression  " + e.getMessage());
         }
+        return flag;
     }
 
 }

@@ -100,9 +100,9 @@ public class ModeleLexique {
      *Une autre façon de faire,
      *avec une array list pour afficher dans la table
      */
-    public static ArrayList<Lexique> afficheEnsemble() {
+    public static ArrayList<Modele> afficheEnsemble() {
 
-        ArrayList<Lexique> tab = new ArrayList<Lexique>();
+        ArrayList<Modele> tab = new ArrayList<Modele>();
 
         try {
             /* Création de la connexion*/
@@ -119,7 +119,7 @@ public class ModeleLexique {
 
             /* Récupération des données */
             while (resultat.next()) {
-                Lexique lexique = new Lexique();
+                Modele lexique = new Modele();
 
                 lexique.setId(resultat.getInt("id"));
                 lexique.setMot(resultat.getString("mot"));
@@ -140,5 +140,6 @@ public class ModeleLexique {
         }
         return tab;
     }
-
+    
+    
 }

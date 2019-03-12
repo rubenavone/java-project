@@ -21,9 +21,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Vue extends javax.swing.JFrame {
     
+    ////Instanciation du controlleur et du Modele////
     Controleur controleur = new Controleur();
-    Lexique lexique = new Lexique();
+    Modele lexique = new Modele();
     
+    ///Mise en place du modelTab///
     DefaultTableModel modelTab;
 
     /**
@@ -114,12 +116,6 @@ public class Vue extends javax.swing.JFrame {
         definitionLabel.setText("Definition");
 
         jLabel2.setText("Catégorie");
-
-        fieldCategorie.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldCategorieActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel3.setText("Ajouter un nouveau mot:");
@@ -301,12 +297,6 @@ public class Vue extends javax.swing.JFrame {
 
         catTitle.setText("Categorie");
 
-        updateCatField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateCatFieldActionPerformed(evt);
-            }
-        });
-
         updateDefiArea.setColumns(20);
         updateDefiArea.setRows(5);
         updateDefArea.setViewportView(updateDefiArea);
@@ -406,12 +396,6 @@ public class Vue extends javax.swing.JFrame {
         deleteMotTitle.setText("Mot");
 
         deleteDefTitle.setText("definition");
-
-        deleteCatField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteCatFieldActionPerformed(evt);
-            }
-        });
 
         deleteCatTitle.setText("Categorie");
 
@@ -526,18 +510,11 @@ public class Vue extends javax.swing.JFrame {
      * @param evt 
      */
     private void motAndTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_motAndTypeMouseClicked
-
         readArea.setLineWrap(true);
         int row = motAndType.getSelectedRow();
-        String mot = (String) motAndType.getValueAt(row, 0);
-       
-        readArea.setText(ModeleLexique.afficheDefinition(mot));
-        
+        String mot = (String) motAndType.getValueAt(row, 0);    
+        readArea.setText(ModeleLexique.afficheDefinition(mot));      
     }//GEN-LAST:event_motAndTypeMouseClicked
-
-    private void fieldCategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCategorieActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fieldCategorieActionPerformed
 
 //GEN-FIRST:event_envoieBtnActionPerformed
  
@@ -548,11 +525,11 @@ public class Vue extends javax.swing.JFrame {
      * @param evt 
      */
     private void afficheBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afficheBtnActionPerformed
-     ArrayList<Lexique> array = ModeleLexique.afficheEnsemble();
+       ArrayList<Modele> array = ModeleLexique.afficheEnsemble();
        modelTab.setRowCount(0);
        //Pour chaque élément contenue dans array 
        //Crée une nouvelle ligne 
-       for(Lexique l : array){
+       for(Modele l : array){
        modelTab.addRow(l.toArray());
        }
     }//GEN-LAST:event_afficheBtnActionPerformed
@@ -566,9 +543,9 @@ public class Vue extends javax.swing.JFrame {
         //Recuperation des info dans les champ
         String mot = fieldMot.getText();  
         String definition = definitionArea.getText(); 
-         String type = fieldCategorie.getText();
+        String type = fieldCategorie.getText();
         
-        //Envoie vers la méthode
+        //Envoie vers la méthode de controle 
         controleur.controlCreate(mot, definition, type, this);
         
         //reinit des case une fois le mot envoyer
@@ -590,19 +567,16 @@ public class Vue extends javax.swing.JFrame {
        String definition = updateDefiArea.getText();
        String type = updateCatField.getText();  
        
-       //envoie vers la méthode
-       ModeleCategorie.updateMot(originalMot, mot, definition, type);
+       //Envoie vers la méthode
+       controleur.controlUpdate(originalMot, mot, definition, type, this);
        
+       //Remise à zero des champ textuel//
        searchField.setText("");
        updateMotField.setText("");
        updateDefiArea.setText("");
        updateCatField.setText("");
        
     }//GEN-LAST:event_updateBtnActionPerformed
-
-    private void updateCatFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCatFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updateCatFieldActionPerformed
     /**
      * Permet de rechercher des éléments
      * dans l'onglet update
@@ -611,8 +585,6 @@ public class Vue extends javax.swing.JFrame {
      * @param evt 
      */
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-
-        
         //Recuperation des info 
         String[] receive = ModeleLexique.rechercheGlossaire(searchField.getText());
         updateDefiArea.setLineWrap(true);
@@ -621,7 +593,6 @@ public class Vue extends javax.swing.JFrame {
         updateMotField.setText(receive[0]);
         updateDefiArea.setText(receive[1]);
         updateCatField.setText(receive[2]);
-
     }//GEN-LAST:event_searchBtnActionPerformed
     /**
      * Même methode de recherche réutilisé
@@ -634,10 +605,6 @@ public class Vue extends javax.swing.JFrame {
         deleteDefiArea.setText(receive[1]);
         deleteCatField.setText(receive[2]);
     }//GEN-LAST:event_deleteSearchBtnActionPerformed
-
-    private void deleteCatFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCatFieldActionPerformed
-        
-            }//GEN-LAST:event_deleteCatFieldActionPerformed
     /**
      * Boutton de supression
      * recupere les info dans le camp mot
@@ -645,9 +612,13 @@ public class Vue extends javax.swing.JFrame {
      * @param evt 
      */
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        //Recupere les info dans le champ mot//
         String mot = deleteMotField.getText();
-        ModeleCategorie.supprimerCategorie(mot);
         
+        //Appel la méthode et supprime //
+        controleur.controlDelete(mot, this);
+        
+        //Remise à zero des champ textuel//
         deleteDefiArea.setText("");
         deleteMotField.setText("");
         deleteCatField.setText("");

@@ -2,29 +2,24 @@ package glossaire;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author agnes extends ruben
-            Faire une petit soft permettant de crée
-                                               lire
-                                               mettre à jour
-                                               supprimer 
-            CRUD
-            Un glossaire contenant diverses informations 
-            un mot sa définitions etc etc 
-            Premierement on place notre mot dans un premier text area 
-            Deuxiemement on place notre definiton dans un second text
-            et enfin lors du clique sur le bouton envoie on recupere les deux 
-            saisis et on les envoie dans la base de donnée 
+ * @author agnes extends ruben Faire une petit soft permettant de crée lire
+ * mettre à jour supprimer CRUD Un glossaire contenant diverses informations un
+ * mot sa définitions etc etc Premierement on place notre mot dans un premier
+ * text area Deuxiemement on place notre definiton dans un second text et enfin
+ * lors du clique sur le bouton envoie on recupere les deux saisis et on les
+ * envoie dans la base de donnée
  */
 public class Vue extends javax.swing.JFrame {
-    
+
     ////Instanciation du controlleur et du Modele////
     Controleur controleur = new Controleur();
-    Modele lexique = new Modele();
-    
+    Lexique lexique = new Lexique(); // good
+
     ///Mise en place du modelTab///
     DefaultTableModel modelTab;
 
@@ -493,126 +488,127 @@ public class Vue extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Selection d'une cellule 
-     * lors du clique envoie en info le mot contenue 
+     * Selection d'une cellule lors du clique envoie en info le mot contenue
      * dans la cellule et renvoie la definition correspondante
-     * @param evt 
+     *
+     * @param evt
      */
     private void motAndTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_motAndTypeMouseClicked
         readArea.setLineWrap(true);
         int row = motAndType.getSelectedRow();
-        String mot = (String) motAndType.getValueAt(row, 0);    
-        readArea.setText(ModeleLexique.afficheDefinition(mot));      
+        String mot = (String) motAndType.getValueAt(row, 0);
+        readArea.setText(ModeleLexique.afficheDefinition(mot));
     }//GEN-LAST:event_motAndTypeMouseClicked
 
 //GEN-FIRST:event_envoieBtnActionPerformed
  
 //GEN-LAST:event_envoieBtnActionPerformed
     /**
-     * Bouton d'affichage sur l'onglet read
-     * Il affiche les éléments dans le tableau
-     * @param evt 
+     * Bouton d'affichage sur l'onglet read Il affiche les éléments dans le
+     * tableau
+     *
+     * @param evt
      */
     private void afficheBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afficheBtnActionPerformed
-       ///Creation de l'arratList contenant les élément récolter avec la méthode afficheEnsemble///
-       ArrayList<Modele> array = ModeleLexique.afficheEnsemble();
-       
-       ///Vide le tableau lors du clique pour eviter les doublons///
-       modelTab.setRowCount(0);
-       //Pour chaque élément contenus dans array 
-       //Crée une nouvelle ligne 
-       for(Modele l : array){
-       modelTab.addRow(l.toArray());
-       }
+        ///Creation de l'arratList contenant les élément récolter avec la méthode afficheEnsemble///
+        ArrayList<Lexique> array = ModeleLexique.afficheEnsemble();
+
+        ///Vide le tableau lors du clique pour eviter les doublons///
+        modelTab.setRowCount(0);
+        //Pour chaque élément contenus dans array 
+        //Crée une nouvelle ligne 
+        for (Lexique l : array) {
+            modelTab.addRow(l.toArray());
+        }
     }//GEN-LAST:event_afficheBtnActionPerformed
     /**
-     * Bouton d'envoie dans l'onglet create
-     * prend les champ mot, type et definition
-     * et envoie la requete a l'aide de la méthode ajouterMot (voir doc)
-     * @param evt 
+     * Bouton d'envoie dans l'onglet create prend les champ mot, type et
+     * definition et envoie la requete a l'aide de la méthode ajouterMot (voir
+     * doc)
+     *
+     * @param evt
      */
     private void envoieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_envoieButtonActionPerformed
         //Recuperation des info dans les champ
-        String mot = fieldMot.getText();  
-        String definition = definitionArea.getText(); 
+        String mot = fieldMot.getText();
+        String definition = definitionArea.getText();
         String type = fieldCategorie.getText();
-        
+
         //Envoie vers la méthode de controle 
         controleur.controlCreate(mot, definition, type, this);
-        
+
         //reinit des case une fois le mot envoyer
         fieldMot.setText("");
         fieldCategorie.setText("");
         definitionArea.setText("");
     }//GEN-LAST:event_envoieButtonActionPerformed
     /**
-     * Bouton de mise à jour dans l'onglet update 
-     * Prend les saisis et envoie la requete via 
-     * la methode updateMot
-     * @param evt 
+     * Bouton de mise à jour dans l'onglet update Prend les saisis et envoie la
+     * requete via la methode updateMot
+     *
+     * @param evt
      */
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-       
-       //Recuperation des info dans les champ
-       String originalMot = searchField.getText();
-       String mot = updateMotField.getText();
-       String definition = updateDefiArea.getText();
-       String type = updateCatField.getText();  
-       
-       //Envoie vers la méthode
-       controleur.controlUpdate(originalMot, mot, definition, type, this);
-       
-       //Remise à zero des champ textuel//
-       searchField.setText("");
-       updateMotField.setText("");
-       updateDefiArea.setText("");
-       updateCatField.setText("");
-       
+
+        //Recuperation des info dans les champ
+        String originalMot = searchField.getText();
+        String mot = updateMotField.getText();
+        String definition = updateDefiArea.getText();
+        String type = updateCatField.getText();
+
+        //Envoie vers la méthode
+        controleur.controlUpdate(originalMot, mot, definition, type, this);
+
+        //Remise à zero des champ textuel//
+        searchField.setText("");
+        updateMotField.setText("");
+        updateDefiArea.setText("");
+        updateCatField.setText("");
+
     }//GEN-LAST:event_updateBtnActionPerformed
     /**
-     * Permet de rechercher des éléments
-     * dans l'onglet update
-     * Definis les champ vide avec le tableau renvoyer par 
-     * la méhotde rechercheGlossaire
-     * @param evt 
+     * Permet de rechercher des éléments dans l'onglet update Definis les champ
+     * vide avec le tableau renvoyer par la méhotde rechercheGlossaire
+     *
+     * @param evt
      */
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         //Recuperation des info 
-        String[] receive = ModeleLexique.rechercheGlossaire(searchField.getText());
+        lexique = ModeleLexique.rechercheGlossaire(searchField.getText());
         updateDefiArea.setLineWrap(true);
-        
+        int id = lexique.getId();
+
+        if (id == 0) {
+            JOptionPane.showMessageDialog(this, "L'entrée n'existe pas");
+        } else {
         //Attribution des info dans leur champ respectif
-        updateMotField.setText(receive[0]);
-        updateDefiArea.setText(receive[1]);
-        updateCatField.setText(receive[2]);
+        updateMotField.setText(lexique.getMot());
+        updateDefiArea.setText(lexique.getDefinition());
+        updateCatField.setText(lexique.getType());
+        }
     }//GEN-LAST:event_searchBtnActionPerformed
     /**
      * Même methode de recherche réutilisé
-     * @param evt 
+     *
+     * @param evt
      */
     private void deleteSearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSearchBtnActionPerformed
-        ///remplis un tableau avec les éléménts récuperer via la recherche///
-        String[] receive = ModeleLexique.rechercheGlossaire(deleteSearchField.getText());
-        ///setLineWrap force le retour à la ligne///
-        deleteDefiArea.setLineWrap(true);
-        ///Remplis les champs avec les éléments du tableau///
-        deleteMotField.setText(receive[0]);
-        deleteDefiArea.setText(receive[1]);
-        deleteCatField.setText(receive[2]);
+        //appel la méthode de control 
+    Controleur.controlSearchDelete(this);
     }//GEN-LAST:event_deleteSearchBtnActionPerformed
     /**
-     * Boutton de supression
-     * recupere les info dans le camp mot
-     * et crée la requete avec la methode supprimerCategorie
-     * @param evt 
+     * Boutton de supression recupere les info dans le camp mot et crée la
+     * requete avec la methode supprimerCategorie
+     *
+     * @param evt
      */
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         //Recupere les info dans le champ mot//
         String mot = deleteMotField.getText();
-        
+
         //Appel la méthode et supprime //
-        controleur.controlDelete(mot, this);
-        
+        controleur.controlDelete(mot, lexique.getId(), this);
+
         //Remise à zero des champ textuel//
         deleteDefiArea.setText("");
         deleteMotField.setText("");

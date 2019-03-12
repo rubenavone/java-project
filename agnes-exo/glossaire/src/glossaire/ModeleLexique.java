@@ -59,9 +59,9 @@ public class ModeleLexique {
         return results;
     }
 
-    public static String[] rechercheGlossaire(String mot) {
+    public static Lexique rechercheGlossaire(String mot) {
 
-        String[] results = new String[3];
+      Lexique lexique = new Lexique();
 
         try {
 
@@ -72,16 +72,19 @@ public class ModeleLexique {
             Statement declaration = connexion.createStatement();
 
             /* Requete */
-            String query = "SELECT mot, definition, type FROM lexique WHERE mot = '" + mot + "';";
+            String query = "SELECT id ,mot, definition, type FROM lexique WHERE mot = '" + mot + "' LIMIT 1;";
+            //System.out.println("Query " + query);
 
             /* Exécution d'une requête de lecture */
             ResultSet resultat = declaration.executeQuery(query);
 
             /* Récupération des données */
             while (resultat.next()) {
-                results[0] = resultat.getString("mot") + "\n";
-                results[1] = resultat.getString("definition") + "\n";
-                results[2] = resultat.getString("type") + "\n";
+                
+                lexique.setId(resultat.getInt("id"));
+                lexique.setMot(resultat.getString("mot"));
+                lexique.setDefinition(resultat.getString("definition"));
+                lexique.setType(resultat.getString("type"));  
             }
             /* fermeture du resultatSet */
             resultat.close();
@@ -93,16 +96,12 @@ public class ModeleLexique {
                     "Erreur d'affichage des catégories: " + e.getMessage()
             );
         }
-        return results;
+        return lexique;
     }
 
-    /*
-     *Une autre façon de faire,
-     *avec une array list pour afficher dans la table
-     */
-    public static ArrayList<Modele> afficheEnsemble() {
+    public static ArrayList<Lexique> afficheEnsemble() {
 
-        ArrayList<Modele> tab = new ArrayList<Modele>();
+        ArrayList<Lexique> tab = new ArrayList<>();
 
         try {
             /* Création de la connexion*/
@@ -119,7 +118,7 @@ public class ModeleLexique {
 
             /* Récupération des données */
             while (resultat.next()) {
-                Modele lexique = new Modele();
+                Lexique lexique = new Lexique();
 
                 lexique.setId(resultat.getInt("id"));
                 lexique.setMot(resultat.getString("mot"));
@@ -140,6 +139,150 @@ public class ModeleLexique {
         }
         return tab;
     }
+   
+        Lexique lexique = new Lexique();
+    /**
+     * Permet de regouper les éléments d'une requete 
+     * dans une array liste qui sera traiter ulterieurement pour
+     * l'affichage 
+     * @return 
+     */
+    public static ArrayList<Lexique> afficheCategoriesOriginal() {
+        
+        ArrayList<Lexique> results = new ArrayList<>();
+
+        try {
+            /* Création de la connexion*/
+            Connection connexion = startConnection();
+
+            /* Création de l'objet gérant les requêtes */
+            Statement declaration = connexion.createStatement();
+
+            /* Requete */
+            
+            String query = "SELECT id, mot, type , definition FROM lexique;";
+
+            /* Exécution d'une requête de lecture */
+            ResultSet resultat = declaration.executeQuery(query);
+
+            /* Récupération des données */
+            while (resultat.next()) {
+                Lexique row = new Lexique();
+                row.setMot(resultat.getString("mot"));
+//                {
+//                    resultat.getInt("id"), 
+//                    resultat.getString("mot"),
+//                    resultat.getString("type"),
+//                    resultat.getString("definition")
+//                };
+                //System.out.println(Arrays.toString(row));
+                results.add(row);
+
+            }
+
+            /* fermeture du resultatSet */
+            resultat.close();
+            /* fermeture de la connexion */
+            closeConnection(connexion);
+
+        } catch (SQLException e) {
+            System.err.println(
+                    "Erreur d'affichage des catégories: " + e.getMessage()
+            );
+        }
+        return results;
+    }
+
+   /**
+    * Méthode permettant d'ajouter 
+    * une entrée dans la base de donnée 
+    * elle prend trois paramètre
+    * @param mot
+    * @param definition
+    * @param type 
+    */
+    public static boolean ajouterMot(String mot , String definition, String type) {
+        boolean flag = false;
+        try {
+            
+            /* Création de la connexion */
+            Connection co = startConnection();
+            Statement declaration = co.createStatement();
+
+            /* Requete */
+            String query = "INSERT INTO lexique (mot, definition, type) VALUES ("+'"'+ mot +'"'+","+'"'+ definition +'"'+ "," +'"'+ type +'"'+ ")";
+            
+            
+            /* Execution d'une requete en écriture */
+            int executeUpdate = declaration.executeUpdate(query);
+            
+            /* Traitement de l'insertion */
+            flag = (executeUpdate==1);
+
+            /* Fermeture de la connexion */
+            closeConnection(co);
+        } catch (SQLException e) {
+            System.err.println("Erreur d'insertion d'un mot " + e.getMessage());
+            
+        }
+        return flag;
+    }
+
+    public static boolean updateMot(String originalMot ,String mot , String definition, String type) {
+       boolean flag = false;
+        try {
+            /* Création de la connexion */
+            Connection co = startConnection();
+
+            /* Création de l'objet gérant les requetes */
+            Statement declaration = co.createStatement();
+
+            /* Requete */
+            String query = "UPDATE lexique SET mot = "+'"'+ mot +'"'+", definition = "+'"'+ definition +'"'+", type = "+'"'+ type +'"'+" WHERE mot = "+'"'+ originalMot +'"';
+              
+            System.out.println(query);
+            /* Execution d'une requete en écriture */
+            int executeUpdate = declaration.executeUpdate(query);
+            
+            /* Traitement de l'insertion */
+            flag = (executeUpdate == 1);
+
+            /* Fermeture de la connexion */
+            closeConnection(co);
+        } catch (SQLException e) {
+            System.err.println("Erreur de Mise à jour " + e.getMessage());
+        }
+        return flag;
+    }
     
+    /**
+     * Supression d'une categorie avec un mot
+     *
+     * @param mot
+     */
+    public static boolean supprimerCategorie(int id) {
+        boolean flag = false;
+        try {
+            /* Création de la connexion */
+            Connection co = startConnection();
+            /* Création de l'objet gérant les requetes */
+            Statement declaration = co.createStatement();
+
+            /* Requete */
+            String query = "DELETE FROM lexique WHERE id = "+"'" + id + "'" + "";
+   
+            /* Execution d'une requete en écriture */
+            int executeUpdate = declaration.executeUpdate(query);
+            
+            /* Traitement de l'insertion */
+           flag = (executeUpdate == 1);
+
+            /* Fermeture de la connexion */
+            closeConnection(co);
+        } catch (SQLException e) {
+            System.err.println("Erreur de suppression  " + e.getMessage());
+        }
+        return flag;
+    }
     
 }

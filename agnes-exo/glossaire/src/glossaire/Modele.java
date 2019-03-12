@@ -13,11 +13,7 @@ import java.sql.SQLException;
  */
 public class Modele {
     
-    private int id;
-    private String mot;
-    private String definition;
-    private String type;
-
+    Lexique lexique = new Lexique();
     
         //GESTION DE CONNECTION//
     /**
@@ -62,48 +58,9 @@ public class Modele {
         }
     }
     
-    ///////SET & GET////////
-    
-     public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getMot() {
-        return mot;
-    }
-
-    public void setMot(String mot) {
-        this.mot = mot;
-    }
-
-    public String getDefinition() {
-        return definition;
-    }
-
-    public void setDefinition(String definition) {
-        this.definition = definition;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    
-    @Override
-    public String toString() {
-        return "Lexique{" + "id= \n" + id + ", nom= \n" + mot + "," + hashCode() +'}';
-    }
-
-    public String[] toArray(){
-        String[] tab = {this.getMot(), this.getType()};
+     public String[] toArray(){
+        String[] tab = {lexique.getMot(), lexique.getType()};
         return tab;
     }
 }
+   

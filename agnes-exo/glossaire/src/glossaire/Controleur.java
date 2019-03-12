@@ -26,7 +26,7 @@ public class Controleur extends Modele {
     public void controlCreate(String mot, String definition, String type, JFrame frame){
             
         if(!mot.isEmpty() || !type.isEmpty() || !definition.isEmpty() ){
-             boolean flag = ModeleCategorie.ajouterMot(mot, definition, type);
+             boolean flag = ModeleLexique.ajouterMot(mot, definition, type);
              if(flag != false){
                  //popup qui apparais si la condition est correcte
                  JOptionPane.showMessageDialog(frame, mess,mess, JOptionPane.INFORMATION_MESSAGE);
@@ -42,7 +42,7 @@ public class Controleur extends Modele {
     public void controlUpdate(String originalMot, String mot, String definition, String type , JFrame frame){
        
         if(!originalMot.isEmpty() || !mot.isEmpty() || !type.isEmpty() || !definition.isEmpty() ){
-             boolean flag = ModeleCategorie.updateMot(originalMot, mot, definition, type);
+             boolean flag = ModeleLexique.updateMot(originalMot, mot, definition, type);
              if(flag != false){
                  //popup qui apparais si la condition est correcte
                  JOptionPane.showMessageDialog(frame, mess,mess, JOptionPane.INFORMATION_MESSAGE);
@@ -54,11 +54,11 @@ public class Controleur extends Modele {
         }
     }
     
-    public void controlDelete(String mot, JFrame frame){
+    public  void controlDelete(String mot , int id, JFrame frame){
         
         if(!mot.isEmpty()){
-             boolean flag = ModeleCategorie.supprimerCategorie(mot)
-                     ;
+             boolean flag = ModeleLexique.supprimerCategorie(id);
+                     
              if(flag != false){
                  //popup qui apparais si la condition est correcte
                  JOptionPane.showMessageDialog(frame, mess,mess, JOptionPane.INFORMATION_MESSAGE);
@@ -70,4 +70,21 @@ public class Controleur extends Modele {
         }
     }
     
+    public static void controlSearchDelete(Vue frame){
+        ///remplis un tableau avec les éléménts récuperer via la recherche///
+        frame.lexique = ModeleLexique.rechercheGlossaire(frame.deleteSearchField.getText());
+        int id = frame.lexique.getId();
+
+        if (id == 0) {
+            JOptionPane.showMessageDialog(frame, "L'entrée n'existe pas");
+        } else {
+
+            ///setLineWrap force le retour à la ligne///
+            frame.deleteDefiArea.setLineWrap(true);
+            ///Remplis les champs avec les éléments du tableau///
+            frame.deleteMotField.setText(frame.lexique.getMot());
+            frame.deleteDefiArea.setText(frame.lexique.getDefinition());
+            frame.deleteCatField.setText(frame.lexique.getType());
+        }
+    }
 }

@@ -20,8 +20,10 @@ import javax.swing.table.DefaultTableModel;
             saisis et on les envoie dans la base de donnée 
  */
 public class Vue extends javax.swing.JFrame {
-
+    
+    Controleur controleur = new Controleur();
     Lexique lexique = new Lexique();
+    
     DefaultTableModel modelTab;
 
     /**
@@ -562,12 +564,17 @@ public class Vue extends javax.swing.JFrame {
      */
     private void envoieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_envoieButtonActionPerformed
         //Recuperation des info dans les champ
-        String mot = fieldMot.getText();
-        String type = fieldCategorie.getText();
+        String mot = fieldMot.getText();  
         String definition = definitionArea.getText(); 
+         String type = fieldCategorie.getText();
         
         //Envoie vers la méthode
-        ModeleCategorie.ajouterMot(mot, definition, type);
+        controleur.controlCreate(mot, definition, type, this);
+        
+        //reinit des case une fois le mot envoyer
+        fieldMot.setText("");
+        fieldCategorie.setText("");
+        definitionArea.setText("");
     }//GEN-LAST:event_envoieButtonActionPerformed
     /**
      * Bouton de mise à jour dans l'onglet update 
@@ -576,6 +583,7 @@ public class Vue extends javax.swing.JFrame {
      * @param evt 
      */
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+       
        //Recuperation des info dans les champ
        String originalMot = searchField.getText();
        String mot = updateMotField.getText();
@@ -584,6 +592,11 @@ public class Vue extends javax.swing.JFrame {
        
        //envoie vers la méthode
        ModeleCategorie.updateMot(originalMot, mot, definition, type);
+       
+       searchField.setText("");
+       updateMotField.setText("");
+       updateDefiArea.setText("");
+       updateCatField.setText("");
        
     }//GEN-LAST:event_updateBtnActionPerformed
 
@@ -633,7 +646,12 @@ public class Vue extends javax.swing.JFrame {
      */
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         String mot = deleteMotField.getText();
-        ModeleCategorie.supprimerCategorie(mot);    }//GEN-LAST:event_deleteBtnActionPerformed
+        ModeleCategorie.supprimerCategorie(mot);
+        
+        deleteDefiArea.setText("");
+        deleteMotField.setText("");
+        deleteCatField.setText("");
+    }//GEN-LAST:event_deleteBtnActionPerformed
 
     /**
      * @param args the command line arguments

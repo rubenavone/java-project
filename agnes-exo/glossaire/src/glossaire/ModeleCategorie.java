@@ -77,12 +77,18 @@ public class ModeleCategorie extends Modele {
     * @param definition
     * @param type 
     */
-    public static void ajouterMot(String mot , String definition, String type) {
+    public static boolean ajouterMot(String mot , String definition, String type) {
+        boolean flag = false;
         try {
             /* Création de la connexion */
             Connection co = startConnection();
 
-            /* Création de l'objet gérant les requetes */
+            /* Création de l'objet gérant les reque  if (executeUpdate == 1) {
+//                System.out.println("Insertion du mot effectuée ! ");
+//                flag = true;
+//            } else {
+//                System.out.println("Insertion du mot non effectuée.");
+//            }tes */
             Statement declaration = co.createStatement();
 
             /* Requete */
@@ -90,19 +96,22 @@ public class ModeleCategorie extends Modele {
             System.out.println(query);
             /* Execution d'une requete en écriture */
             int executeUpdate = declaration.executeUpdate(query);
-
+            flag = (executeUpdate==1);
             /* Traitement de l'insertion */
-            if (executeUpdate == 1) {
-                System.out.println("Insertion du mot effectuée ! ");
-            } else {
-                System.out.println("Insertion du mot non effectuée.");
-            }
+//            if (executeUpdate == 1) {
+//                System.out.println("Insertion du mot effectuée ! ");
+//                flag = true;
+//            } else {
+//                System.out.println("Insertion du mot non effectuée.");
+//            }
 
             /* Fermeture de la connexion */
             closeConnection(co);
         } catch (SQLException e) {
             System.err.println("Erreur d'insertion d'un mot " + e.getMessage());
+            
         }
+        return flag;
     }
 
     public static void updateMot(String originalMot ,String mot , String definition, String type) {
